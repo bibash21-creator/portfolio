@@ -1,6 +1,7 @@
 "use client";
 import { Space_Mono } from "next/font/google";
 import { useState } from "react";
+import Line from "@/app/line/Line"
 
 interface FormData {
   name: string;
@@ -117,8 +118,8 @@ export default function Final() {
           </form>
         </div>
       </section>
+      <Line />
 
-      <div className="line border-b-[0.1em] border-[#7ED99E] mx-3 md:mx-10 lg:mx-20 mt-5"></div>
     </>
   );
 }
