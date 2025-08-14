@@ -61,16 +61,16 @@ export default function Project(){
                     <div className={`${mono.className}`}>
                         <h1 className="text-2xl">Hospital Management System</h1>
                        <div className="flex gap-x-10 mt-3 text-xl">
-  <span className="cursor-pointer px-4 py-1 rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+  <span className="cursor-pointer px-3 py-1 rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
     HTML
   </span>
-  <span className="cursor-pointer px-4 py-1rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+  <span className="cursor-pointer px-3 py-1rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
     CSS
   </span>
-  <span className="cursor-pointer px-4 py-1 rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+  <span className="cursor-pointer px-3 py-1 rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
     JS
   </span>
-  <span className="px-4 py-1 cursor-pointer rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+  <span className="px-3 py-1 cursor-pointer rounded-lg border-2 border-[#7ED99E] bg-[#0D0D0D] text-[#F2F2F2] shadow-md shadow-[#7ED99E] hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
     Tailwind CSS
   </span>
 </div>
