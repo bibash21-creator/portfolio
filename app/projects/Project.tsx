@@ -1,7 +1,8 @@
 "use client";
 
 import {Space_Mono} from "next/font/google";
-import {AiOutlineEye} from "react-icons/ai"
+import {AiOutlineEye} from "react-icons/ai";
+import Link from "next/link";
 
 import Image from "next/image"
 
@@ -38,9 +39,9 @@ export default function Project(){
                         </div>
                        
 
-                       <div className="mt-5 text-xl flex gap-x-3 bg-[#7ED99E] text-[#0D0D0D] px-5 w-[15vw] py-3 hover:scale-105 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]">View Live Site 
+                       <Link href="" className="mt-5 text-xl flex gap-x-3 bg-[#7ED99E] text-[#0D0D0D] px-5 w-[15vw] py-3 hover:scale-105 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]">View Live Site 
                             <AiOutlineEye size={25} className="animate-pulse"/>
-                        </div>
+                        </Link>
                         
                     </div>
                 </div>
@@ -60,9 +61,9 @@ export default function Project(){
                             <span className="">Tailwind CSS</span>
                         </div>
 
-                        <div className="mt-5 text-xl flex gap-x-3 bg-[#7ED99E] text-[#0D0D0D] px-5 w-[15vw] py-3 hover:scale-105 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]">View Live Site 
+                        <Link href="https://hospital-management-system-theta-jade.vercel.app/" className="mt-5 text-xl flex gap-x-3 bg-[#7ED99E] text-[#0D0D0D] px-5 w-[15vw] py-3 hover:scale-105 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]">View Live Site 
                             <AiOutlineEye size={25} className="animate-pulse"/>
-                        </div>
+                        </Link>
                     </div>
                 </div>
 
