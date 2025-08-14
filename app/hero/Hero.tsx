@@ -20,7 +20,7 @@ export default function Hero(){
             <section className="flex flex-col md:flex-row hero mx-5 md:mx-25 lg:mx-40 w-[auto] h-[auto] mt-20 md:mt-10 lg:mt-35">
 
                  <div className="container md:w-[70%]">
-  <header className={`${mono.className} text-5xl md:text-6xl lg:text-7xl text-center tracking-widest md:tracking-wide md: text-left leading-[1.2em]`}>Nice to meet you! <br />
+  <header className={`${mono.className} text-5xl md:text-6xl lg:text-7xl text-center tracking-widest md:tracking-wide md:text-left leading-[1em]`}>Nice to meet you! <br />
                 <span>I'm</span> <span className="border-b-[0.1em] border-[#7ED99E] tracking-tighter animate-pulse">Bibash Poudel.</span></header>
 
                 <aside className="flex justify-center mt-20 visible md:hidden">
