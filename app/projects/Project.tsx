@@ -17,6 +17,7 @@ const mono = Space_Mono({
 export default function Project(){
     return(
         <>
+        
         <section className="mx-3 md:mx-25 lg:mx-40 mt-20  h-[auto]">
             <div className="flex  flex-col md:flex-row justify-between items-center mb-20 md:mb-25">
                 <header className={`${mono.className} flex gap-x-3 text-5xl md:text-6xl lg:text-7xl`}>Projects
@@ -84,12 +85,11 @@ export default function Project(){
             </aside>
             
         </section>
-    
-    
-    
-    
-    
-    
+
+
+
+  
+
     
     
             </>
