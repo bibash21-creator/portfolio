@@ -44,7 +44,7 @@ export default function Project(){
                         </div>
                        
 
-                       <Link href="https://school-management-system-ten-pi.vercel.app/" className="mt-7 text-xl flex bg-[#7ED99E] text-[#0D0D0D] px-5 w-[75vw] md:w-[14vw] py-3 hover:scale-110 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]" target="_blank">View Live Site 
+                       <Link href="https://school-management-system-ten-pi.vercel.app/" className="mt-7 text-xl flex bg-[#7ED99E] text-[#0D0D0D] px-5 w-[75vw] md:w-[25vw] lg:w-[20vw] py-3 hover:scale-110 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]" target="_blank">View Live Site 
                             <FiArrowUpRight className="animate-pulse text-xl"/>
                         </Link>
                         
@@ -66,7 +66,7 @@ export default function Project(){
                             <span className="">Tailwind CSS</span>
                         </div>
 
-                        <Link href="https://hospital-management-system-theta-jade.vercel.app/" className="mt-7 text-xl flex bg-[#7ED99E] text-[#0D0D0D] px-5 w-[75vw] md:w-[14vw] py-3 hover:scale-110 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]" target="_blank">View Live Site 
+                        <Link href="https://hospital-management-system-theta-jade.vercel.app/" className="mt-7 text-xl flex bg-[#7ED99E] text-[#0D0D0D] px-5 w-[75vw] md:w-[25vw] lg:w-[20vw] py-3 hover:scale-110 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]" target="_blank">View Live Site 
                             <FiArrowUpRight className="animate-pulse text-xl"/>
                         </Link>
                     </div>

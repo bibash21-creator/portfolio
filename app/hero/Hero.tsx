@@ -42,7 +42,7 @@ export default function Hero(){
                 
                
                 <div className="mt-20 text-center md:text-left">
-                <Link href="/contact" className={`flex gap-x-5 ${mono.className} hover:scale-150 border-b-[0.1em] border-[#7ED99E] text-xl w-[50%] md:w-[50%] lg:w-[19%]`}>Contact Me
+                <Link href="/contact" className={`flex gap-x-5 ${mono.className} hover:scale-150 border-b-[0.1em] border-[#7ED99E] text-xl w-[50%] md:w-[30%] lg:w-[22%]`}>Contact Me
                 <MdContactMail className="text-sm text-[#7ED99E] animate-pulse" /></Link>
                 </div>
                  
