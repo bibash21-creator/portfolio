@@ -1,7 +1,10 @@
 "use client";
 import { Space_Mono } from "next/font/google";
 import { useState } from "react";
-import Line from "@/app/line/Line"
+import Line from "@/app/line/Line";
+import {MdEmail} from "react-icons/md";
+import {FiArrowUpRight} from "react-icons/fi"
+
 
 interface FormData {
   name: string;
@@ -49,13 +52,13 @@ export default function Final() {
 
   return (
     <>
-      <section className="contact mx-3 md:mx-20 lg:mx-50 mt-20 w-auto md:mt-30 h-auto">
+      <section className="contact mx-3 md:mx-20 lg:mx-40 mt-20 w-auto md:mt-30 h-auto">
         <div className="flex flex-col md:flex-row md:gap-10">
           <div className="flex flex-col w-full md:w-1/2">
             <header
-              className={`${mono.className} text-5xl md:text-6xl lg:text-7xl text-center md:text-left`}
+              className={`${mono.className} text-5xl md:text-6xl lg:text-7xl text-center md:text-left flex gap-x-3`}
             >
-              Contact
+              Contact  <MdEmail className="text-4xl text-[#7ED99E] animate-bounce"/>
             </header>
 
             <p className={`${mono.className} text-center md:text-left mt-7`}>
@@ -110,9 +113,9 @@ export default function Final() {
             <div className="mt-5">
               <button
                 type="submit"
-                className={`${mono.className} border-b px-4 py-2 hover:scale-105 cursor-pointer`}
+                className={`flex ${mono.className} border-b px-4 py-2 hover:scale-105 cursor-pointer`}
               >
-                Send Message
+                Send Message <FiArrowUpRight className="text-sm animate-pulse text-[#7ED99E]" />
               </button>
             </div>
           </form>

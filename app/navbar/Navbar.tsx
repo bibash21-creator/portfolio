@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <nav className="flex justify-between items-center mx-3 md:mx-15 lg:mx-50 mt-2 md:mt-5 lg:mt-10">
+      <nav className="flex justify-between items-center mx-3 md:mx-15 lg:mx-30 mt-2 md:mt-5 lg:mt-10">
         <div className="logo">
           <Link href="" className={`${mono.className} text- md:text-2xl`}>
             bibashpoudel
@@ -30,16 +30,16 @@ export default function Navbar() {
         {/* Hide nav-links on smaller screens, show on md and above */}
         <div className="nav-links hidden gap-x-7 md:flex">
           <Link href="">
-            <FaGithub size={25} className="hover:scale-200"/>
+            <FaGithub size={25} className="hover:scale-150 hover:text-[#7ED99E]"/>
           </Link>
           <Link href="">
-            <FaLinkedin size={25} className="hover:scale-200"/>
+            <FaLinkedin size={25} className="hover:scale-150 hover:text-[#7ED99E]"/>
           </Link>
           <Link href="">
-            <FaStackOverflow size={25} className="hover:scale-200"/>
+            <FaStackOverflow size={25} className="hover:scale-150 hover:text-[#7ED99E]"/>
           </Link>
           <Link href="">
-            <FaFacebook size={25} className="hover:scale-200"/>
+            <FaFacebook size={25} className="hover:scale-150 hover:text-[#7ED99E]"/>
           </Link>
         </div>
 

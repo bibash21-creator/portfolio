@@ -1,6 +1,7 @@
 
 import {FaHtml5, FaCss3Alt, FaReact} from "react-icons/fa"
 import { Space_Mono } from 'next/font/google';
+import {GiSkills} from 'react-icons/gi';
 
 
 import {SiTailwindcss, SiNextdotjs} from "react-icons/si"
@@ -21,8 +22,9 @@ export  default function Skills(){
 ];
     return(
     <>
-    <section className=" w-auto h-auto mx-3  mt-25  md:mx-50 md:mt-50">
-        <header className={`${mono.className} text-5xl md:text-6xl lg:text-7xl mb-20 text-center md:text-left md:mb-25`}> Skills</header>
+    <section className=" w-auto h-auto mx-3  mt-25  md:mx-40 md:mt-50">
+        <header className={`${mono.className} flex gap-x-3 text-5xl md:text-6xl lg:text-7xl mb-20 text-center md:text-left md:mb-25`}> Skills 
+          <GiSkills className="text-4xl text-[#7ED99E] animate-bounce" /></header>
            <aside className={`grid grid-rows-6 grid-cols-1 md:grid-rows-3 md:grid-cols-3 gap-x-5 text-center md:text-left ${mono.className}`}>
   {skills.map((skill, index) => (
     <div 
