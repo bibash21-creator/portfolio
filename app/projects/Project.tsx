@@ -1,4 +1,7 @@
-import {Space_Mono} from "next/font/google"
+"use client";
+
+import {Space_Mono} from "next/font/google";
+import {AiOutlineEye} from "react-icons/ai"
 
 import Image from "next/image"
 
@@ -33,7 +36,12 @@ export default function Project(){
                             <span className="">CSS</span>
                             <span className="">JS</span>
                         </div>
-                        {/* <div className="" */}
+                       
+
+                       <div className="mt-5 text-xl flex gap-x-3 bg-[#7ED99E] text-[#0D0D0D] px-5 w-[15vw] py-3 hover:scale-105 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]">View Live Site 
+                            <AiOutlineEye size={25} className="animate-pulse"/>
+                        </div>
+                        
                     </div>
                 </div>
                 <div className="">
@@ -50,6 +58,10 @@ export default function Project(){
                             <span className="">CSS</span>
                             <span className="">JS</span>
                             <span className="">Tailwind CSS</span>
+                        </div>
+
+                        <div className="mt-5 text-xl flex gap-x-3 bg-[#7ED99E] text-[#0D0D0D] px-5 w-[15vw] py-3 hover:scale-105 cursor-pointer border border-[#7ED99E] rounded-2xl hover:text-[#7ED99E] hover:bg-[#0D0D0D]">View Live Site 
+                            <AiOutlineEye size={25} className="animate-pulse"/>
                         </div>
                     </div>
                 </div>
