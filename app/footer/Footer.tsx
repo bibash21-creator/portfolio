@@ -26,16 +26,16 @@ export default function Footer() {
         {/* Hide nav-links on smaller screens, show on md and above */}
         <div className="nav-links flex gap-x-5 md:gap-x-7 mt-5 md:mt-0">
           <Link href="">
-            <FaGithub size={25} className="hover:scale-200"/>
+            <FaGithub size={25} className="hover:scale-150"/>
           </Link>
           <Link href="">
-            <FaLinkedin size={25} className="hover:scale-200"/>
+            <FaLinkedin size={25} className="hover:scale-150"/>
           </Link>
           <Link href="">
-            <FaStackOverflow size={25} className="hover:scale-200"/>
+            <FaStackOverflow size={25} className="hover:scale-150"/>
           </Link>
           <Link href="">
-            <FaFacebook size={25} className="hover:scale-200"/>
+            <FaFacebook size={25} className="hover:scale-150"/>
           </Link>
         </div>
         </footer>

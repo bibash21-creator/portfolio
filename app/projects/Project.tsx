@@ -20,11 +20,11 @@ export default function Project(){
 
             <aside className="grid grid-rows-2 grid-cols-1 md:grid-rows-1 md:grid-cols-2 gap-x-0 md:gap-x-7">
                 <div className="">
-                    <Image src="/Calculator.png"
-                    width={400}
-                    height={400}
+                    <Image src="/School.png"
+                    width={500}
+                    height={500}
                     alt="Image of the Project" 
-                    className="object-fit w-[25vw] h-[25vw]"/>
+                    />
 
                     <div className={`${mono.className}`}>
                         <h1 className="text-2xl">School Management System</h1>
@@ -38,10 +38,10 @@ export default function Project(){
                 </div>
                 <div className="">
                     <Image src="/Hospital.png"
-                    width={400}
-                    height={400}
+                    width={500}
+                    height={500}
                     alt="Image of the Project" 
-                    className="object-fit w-[25vw] h-[25vw]"/>
+                    />
 
                     <div className={`${mono.className}`}>
                         <h1 className="text-2xl">Hospital Management System</h1>
