@@ -24,29 +24,32 @@ export default function Project(){
                     width={400}
                     height={400}
                     alt="Image of the Project" 
-                    className="object-fit"/>
+                    className="object-fit w-[25vw] h-[25vw]"/>
 
                     <div className={`${mono.className}`}>
-                        <h1 className="text-2xl">Calculator App</h1>
+                        <h1 className="text-2xl">School Management System</h1>
                         <div className="flex gap-x-10 mt-3 text-xl">
                             <span className="">HTML</span>
                             <span className="">CSS</span>
                             <span className="">JS</span>
                         </div>
+                        {/* <div className="" */}
                     </div>
                 </div>
                 <div className="">
-                    <Image src=""
-                    width={0}
-                    height={0}
-                    alt="Image of the Project" />
+                    <Image src="/Hospital.png"
+                    width={400}
+                    height={400}
+                    alt="Image of the Project" 
+                    className="object-fit w-[25vw] h-[25vw]"/>
 
                     <div className={`${mono.className}`}>
-                        <h1 className="text-2xl">Calculator App</h1>
+                        <h1 className="text-2xl">Hospital Management System</h1>
                         <div className="flex gap-x-10 mt-3 text-xl">
                             <span className="">HTML</span>
                             <span className="">CSS</span>
                             <span className="">JS</span>
+                            <span className="">Tailwind CSS</span>
                         </div>
                     </div>
                 </div>
