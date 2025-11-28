@@ -14,7 +14,7 @@ import {MdWorkOutline} from 'react-icons/md';
 export default function Hero() {
   return (
     <>
-      <section className="px-10 mb-20 md:px-20 flex flex-col-reverse md:flex md:flex-row animate-in fade-out duration-1000">
+      <section className="container mb-20 md:px-20 flex flex-col-reverse md:flex md:flex-row animate-in fade-out duration-1000">
         <div className="md:w-1/2 text-center md:text-left py-10">
           <div className="space-y-4 text-center md:text-left">
   {/* Name */}

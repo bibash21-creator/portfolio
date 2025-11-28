@@ -55,7 +55,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="contact px-6 md:px-20 py-10">
+    <section className="contact container py-10">
       {/* Heading */}
       <motion.h1
         className="text-center text-4xl md:text-5xl font-extrabold mb-4"
@@ -137,7 +137,7 @@ export default function Contact() {
               <input
                 {...register('name', { required: 'Name is required' })}
                 placeholder="Your Name"
-                className="border p-2 mt-3 rounded"
+                className="border p-2 mt-3 rounded w-[100%]"
               />
               {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
             </motion.div>
@@ -150,7 +150,7 @@ export default function Contact() {
                   pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
                 })}
                 placeholder="Your Email"
-                className="border p-2 rounded mt-3"
+                className="border p-2 rounded mt-3 w-[100%]"
               />
               {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
             </motion.div>
@@ -161,7 +161,7 @@ export default function Contact() {
                 {...register('message', { required: 'Message is required' })}
                 placeholder="Your Message"
                 rows={5}
-                className="border p-2 mt-3 rounded"
+                className="border p-2 mt-3 rounded w-[100%]"
               />
               {errors.message && <span className="text-red-500 text-sm">{errors.message.message}</span>}
             </motion.div>

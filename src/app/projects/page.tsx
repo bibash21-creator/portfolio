@@ -59,7 +59,7 @@ export default function ProjectSection() {
     filter === 'All' ? projects : projects.filter((p) => p.status === filter)
 
   return (
-    <section className="px-6 md:px-20 py-16">
+    <section className="container md:px-20 py-16 mb-10">
       <h1 className="text-4xl font-extrabold md:text-5xl text-center mb-5">🚀 My Projects</h1>
       <p className="mb-12 text-center text-gray-600 max-w-3xl mx-auto">
         Each project here reflects not just technical execution, but a philosophy of resilience,
@@ -97,7 +97,7 @@ export default function ProjectSection() {
               width={400}
               height={300}
               alt={`Image of ${project.title}`}
-              className="rounded-md mb-4"
+              className="rounded-md mb-4 w-[100%] h-[25%] md:h-[50%]"
             />
             <h2 className="text-xl font-semibold text-indigo-600">{project.title}</h2>
             <p

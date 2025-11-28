@@ -19,7 +19,7 @@ export default function About() {
   };
 
   return (
-    <section className="flex flex-col md:flex-row about px-6 md:px-20 py-12 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+    <section className="container flex flex-col md:flex-row about px-6 md:px-20 py-12 text-gray-800 dark:text-gray-100 transition-colors duration-300">
       {/* Intro animation for OrbitingSkillsScene */}
       <motion.div
         className="md:w-1/2"
