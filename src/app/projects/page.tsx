@@ -14,7 +14,7 @@ const projects = [
     description:
       'A sleek, responsive calculator built to explore modular UI design and arithmetic logic.',
     tech: ['HTML5', 'CSS3', 'JS'],
-    live: '#',
+    live: 'https://calculator-seven-sage-81.vercel.app/',
     github: '#'
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     description:
       'A recipe browsing interface with clean layout and dynamic filtering — built for clarity and UX.',
     tech: ['HTML5', 'CSS3'],
-    live: '#',
+    live: 'https://recipe-page-rho-gold.vercel.app/',
     github: '#'
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     description:
       'A fullstack CRUD system to manage students, teachers, and classes — built with backend fundamentals.',
     tech: ['HTML5', 'CSS3', 'JS','Tailwind CSS'],
-    live: '#',
+    live: 'https://school-management-system-ten-pi.vercel.app/',
     github: '#'
   },
   {
@@ -47,8 +47,30 @@ const projects = [
     description:
       'A patient and staff management system designed to streamline hospital workflows and data handling.',
     tech: ['JSX', 'CSS3', 'JS','React'],
-    live: '#',
+    live: 'https://hospital-management-system-theta-jade.vercel.app/',
     github: '#'
+  },
+  {
+    title: 'BIT Result Checker Application',
+    status: 'Completed',
+    image: '',
+    tagline: 'Track your exam progress',
+    description: 
+      '',
+    tech: [''],
+    live: '',
+    github: ''
+  },
+  {
+    title: 'Sentilytics - Sentimental Analysis Application',
+    status: 'Completed',
+    image: '',
+    tagline: '',
+    description: 
+      '',
+      tech: [''],
+      live: '',
+      github: ''
   }
 ]
 
