@@ -34,7 +34,7 @@ const projects = [
     image: '/sms.png',
     tagline: 'Structure for learning',
     description:
-      'A fullstack CRUD system to manage students, teachers, and classes — built with backend fundamentals.',
+      'A student and teacher management system.',
     tech: ['HTML5', 'CSS3', 'JS','Tailwind CSS'],
     live: 'https://school-management-system-ten-pi.vercel.app/',
     github: '#'
@@ -45,7 +45,7 @@ const projects = [
     image: '/hms.png',
     tagline: 'Care meets code',
     description:
-      'A patient and staff management system designed to streamline hospital workflows and data handling.',
+      'A patient and staff management system.',
     tech: ['JSX', 'CSS3', 'JS','React'],
     live: 'https://hospital-management-system-theta-jade.vercel.app/',
     github: '#'
@@ -112,7 +112,7 @@ export default function ProjectSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-lg p-5 shadow-md hover:shadow-xl transition"
+            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-lg p-3 shadow-md hover:shadow-xl transition"
           >
             <Image
               src={project.image}
@@ -143,7 +143,7 @@ export default function ProjectSection() {
               ))}
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-x-4 md:gap-4">
               <Button asChild>
                 <a href={project.live} target="_blank" rel="noopener noreferrer">
                   Live Demo

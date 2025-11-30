@@ -125,7 +125,7 @@ export default function Contact() {
 
         {/* Form with staggered animation */}
         <motion.div
-          className="w-full md:w-1/2 rounded-lg p-6"
+          className="w-full md:w-1/2 rounded-lg"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
