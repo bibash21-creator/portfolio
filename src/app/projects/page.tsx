@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 const projects = [
   {
@@ -51,6 +52,17 @@ const projects = [
     github: '#'
   },
   {
+    title: 'Ticket Application',
+    status: 'Ongoing',
+    image: '/tms.png',
+    tagline: 'We Care For You',
+    description:
+      'A ticket management system',
+    tech: ['TailwindCSS','Nextjs'],
+    live: 'https://ticketing-app-black.vercel.app/',
+    github: 'https://github.com/bibash21-creator/Ticketing_App'
+  },
+  {
     title: 'BIT Result Checker Application',
     status: 'Completed',
     image: '',
@@ -61,17 +73,7 @@ const projects = [
     live: '',
     github: ''
   },
-  {
-    title: 'Sentilytics - Sentimental Analysis Application',
-    status: 'Completed',
-    image: '',
-    tagline: '',
-    description: 
-      '',
-      tech: [''],
-      live: '',
-      github: ''
-  }
+  
 ]
 
 export default function ProjectSection() {
@@ -145,14 +147,14 @@ export default function ProjectSection() {
 
             <div className="flex gap-x-4 md:gap-4">
               <Button asChild>
-                <a href={project.live} target="_blank" rel="noopener noreferrer">
+                <Link href={project.live} target="_blank" rel="noopener noreferrer">
                   Live Demo
-                </a>
+                </Link>
               </Button>
               <Button variant="outline" asChild>
-                <a href={project.github} target="_blank" rel="noopener noreferrer">
+                <Link href={project.github} target="_blank" rel="noopener noreferrer">
                   GitHub
-                </a>
+                </Link>
               </Button>
             </div>
           </motion.div>
