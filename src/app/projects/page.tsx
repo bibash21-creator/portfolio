@@ -65,13 +65,13 @@ const projects = [
   {
     title: 'BIT Result Checker Application',
     status: 'Completed',
-    image: '',
+    image: '/brc.png',
     tagline: 'Track your exam progress',
     description: 
-      '',
-    tech: [''],
-    live: '',
-    github: ''
+      'A Streamlit Application for checking your BIT',
+    tech: ['Streamlit', 'Pandas', 'Machine Learning'],
+    live: 'https://bitresult079.streamlit.app/',
+    github: 'https://github.com/bibash21-creator/Result_Checker'
   },
   
 ]

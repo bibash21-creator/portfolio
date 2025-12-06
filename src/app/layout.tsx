@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {ThemeProvider} from "next-themes";
-import Navbar from '@/app/universal/Navbar';
-import Footer from '@/app/universal/Footer';
+import Navbar from '@/app/(universal)/Navbar';
+import Footer from '@/app/(universal)/Footer';
 import {Anonymous_Pro} from 'next/font/google'
 
 export const font = Anonymous_Pro({
