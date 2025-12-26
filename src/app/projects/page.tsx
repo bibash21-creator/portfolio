@@ -9,24 +9,48 @@ import {
   ExternalLink,
   Github,
   ArrowRight,
-  Sparkles,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
 
 const projects = [
   {
-    title: "Modern Calculator App",
+    title: "To-do List Application",
     status: "Completed",
-    image: "/calculator.png",
-    tagline: "Precision meets simplicity",
+    image: "/tdla.png",
+    tagline: "Organize tasks, code clean—daily done right.",
     description:
-      "A sleek, responsive calculator built to explore modular UI design and arithmetic logic.",
-    tech: ["HTML5", "CSS3", "JS"],
-    live: "https://calculator-seven-sage-81.vercel.app/",
-    github: "#",
-    category: "Web App",
+      "Modern task management app with drag & drop, priorities, and analytics.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    live: "https://todo-gamma-mauve.vercel.app/",
+    github: "https://github.com/bibash21-creator/Todo",
+    category: "Productivity",
   },
+
+  {
+    title: "Weather Dashboard Application",
+    status: "Ongoing",
+    image: "/weatherdash.png",
+    tagline: "Forecasts, insights, and clarity—weather made personal.",
+    description:
+      "Modern weather dashboard with hourly and weekly forecasts, air quality insights, and mood-based storytelling.",
+    tech: ["Next.js", "TypeScript", "Tailwind", "OpenWeather API"],
+    live: "https://weatherdash-bibash.vercel.app/",
+    github: "https://github.com/bibash21-creator/WeatherDash",
+    category: "Utility",
+  },
+  {
+  title: "Notes Application",
+  status: "Ongoing",
+  image: "/notes.png",
+  tagline: "Organize thoughts, capture ideas, and keep learning alive.",
+  description:
+    "A modern notes application with secure signup/login, intuitive UI, and cloud-based storage powered by MongoDB Atlas. Designed for simplicity and productivity, it helps users create, manage, and access notes seamlessly across devices.",
+  tech: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Tailwind CSS"],
+  live: "https://notesapp-bibash.vercel.app/",
+  github: "https://github.com/bibash21-creator/NotesApp",
+  category: "Productivity",
+},
   {
     title: "Hospital Management System",
     status: "Ongoing",
@@ -62,18 +86,20 @@ const projects = [
     github: "https://github.com/bibash21-creator/Result_Checker",
     category: "Data Science",
   },
+
   {
-    title: "To-do List Application",
+    title: "Modern Calculator App",
     status: "Completed",
-    image: "/tdla.png",
-    tagline: "Organize tasks, code clean—daily done right.",
+    image: "/calculator.png",
+    tagline: "Precision meets simplicity",
     description:
-      "Modern task management app with drag & drop, priorities, and analytics.",
-    tech: ["React", "TypeScript", "Tailwind"],
-    live: "https://todo-gamma-mauve.vercel.app/",
-    github: "https://github.com/bibash21-creator/Todo",
-    category: "Productivity",
+      "A sleek, responsive calculator built to explore modular UI design and arithmetic logic.",
+    tech: ["HTML5", "CSS3", "JS"],
+    live: "https://calculator-seven-sage-81.vercel.app/",
+    github: "#",
+    category: "Web App",
   },
+
   {
     title: "Recipe Page App",
     status: "Completed",
@@ -145,9 +171,7 @@ export default function ProjectSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full mb-6">
-            
-          </div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full mb-6"></div>
 
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-700 dark:from-white dark:via-indigo-200 dark:to-purple-300 bg-clip-text text-transparent">
             Portfolio Showcase
@@ -304,30 +328,36 @@ export default function ProjectSection() {
                     </div>
 
                     {/* Action Buttons */}
-<div className="flex gap-3">
-  <Button
-    asChild
-    className="flex-1 gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
-  >
-    <a href={project.live} target="_blank" rel="noopener noreferrer">
-      <ExternalLink className="w-4 h-4" />
-      Live Demo
-    </a>
-  </Button>
+                    <div className="flex gap-3">
+                      <Button
+                        asChild
+                        className="flex-1 gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+                      >
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          Live Demo
+                        </a>
+                      </Button>
 
-  <Button
-    variant="outline"
-    asChild
-    className="flex-1 gap-2"
-  >
-    <a href={project.github} target="_blank" rel="noopener noreferrer">
-      <Github className="w-4 h-4" />
-      Code
-    </a>
-  </Button>
-</div>
-
-           
+                      <Button
+                        variant="outline"
+                        asChild
+                        className="flex-1 gap-2"
+                      >
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-4 h-4" />
+                          Code
+                        </a>
+                      </Button>
+                    </div>
                   </div>
 
                   {/* Hover Glow Effect */}

@@ -45,7 +45,7 @@ export default function Hero() {
 </Button>
 <Button variant="outline">
    <Link href="/bibash.pdf" target="_blank" 
-   download = "Bibash_Poudel_Resume.pdf" className="flex items-center gap-3"><FiDownload /> Download Resume</Link>
+   download = "bibash.pdf" className="flex items-center gap-3"><FiDownload /> Download Resume</Link>
   
 </Button>
 <Button variant="outline" >
