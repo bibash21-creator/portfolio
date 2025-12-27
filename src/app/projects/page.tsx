@@ -35,7 +35,7 @@ const projects = [
     description:
       "Modern weather dashboard with hourly and weekly forecasts, air quality insights, and mood-based storytelling.",
     tech: ["Next.js", "TypeScript", "Tailwind", "OpenWeather API"],
-    live: "",
+    live: "https://weather-app-jet-sigma-84.vercel.app/",
     github: "https://github.com/bibash21-creator/WeatherDash",
     category: "Utility",
   },
