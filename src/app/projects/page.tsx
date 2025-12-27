@@ -30,12 +30,12 @@ const projects = [
   {
     title: "Weather Dashboard Application",
     status: "Ongoing",
-    image: "/weatherdash.png",
+    image: "/weather.png",
     tagline: "Forecasts, insights, and clarity—weather made personal.",
     description:
       "Modern weather dashboard with hourly and weekly forecasts, air quality insights, and mood-based storytelling.",
     tech: ["Next.js", "TypeScript", "Tailwind", "OpenWeather API"],
-    live: "https://weatherdash-bibash.vercel.app/",
+    live: "",
     github: "https://github.com/bibash21-creator/WeatherDash",
     category: "Utility",
   },
@@ -47,8 +47,8 @@ const projects = [
   description:
     "A modern notes application with secure signup/login, intuitive UI, and cloud-based storage powered by MongoDB Atlas. Designed for simplicity and productivity, it helps users create, manage, and access notes seamlessly across devices.",
   tech: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Tailwind CSS"],
-  live: "https://notesapp-bibash.vercel.app/",
-  github: "https://github.com/bibash21-creator/NotesApp",
+  live: "",
+  github: "https://github.com/bibash21-creator/notes_app",
   category: "Productivity",
 },
   {
