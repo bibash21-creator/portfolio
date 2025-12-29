@@ -1,108 +1,148 @@
-'use client';
+"use client"
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion"
 
-export default function SkillTimeline() {
-  const timeline = [
-    {
-      year: "2021",
-      title: "Foundations",
-      skills: ["HTML", "CSS", "JavaScript"],
-      note: "Started exploring the web and building static pages."
-    },
-    {
-      year: "2022",
-      title: "Frontend Frameworks",
-      skills: ["React", "Tailwind CSS", "Git"],
-      note: "Built my first interactive apps and learned component-based design."
-    },
-    {
-      year: "2023",
-      title: "Fullstack Exploration",
-      skills: ["Next.js", "Node.js", "MongoDB", "Express"],
-      note: "Dove into backend fundamentals and built CRUD apps."
-    },
-    {
-      year: "2024",
-      title: "Design & Animation",
-      skills: ["Framer Motion", "shadcn/ui", "Lucide React"],
-      note: "Focused on storytelling, polish, and user experience."
-    },
-    {
-      year: "2025",
-      title: "Creative Coding & 3D",
-      skills: ["React Three Fiber", "Modular Architecture", "Emotional Storytelling"],
-      note: "Blending technical depth with visual creativity and resilience."
-    }
-  ];
+const skillTimeline = [
+  {
+    year: "2021",
+    category: "Frontend",
+    skills: [
+      { name: "HTML", detail: "Semantic, accessible markup" },
+      { name: "CSS", detail: "Responsive, modern layouts" },
+      { name: "JavaScript", detail: "ES6+, modular patterns" },
+      { name: "React", detail: "Hooks, context, reusable components" },
+      { name: "Next.js", detail: "SSR, ISR, API routes" },
+      { name: "Tailwind CSS", detail: "Utility-first, responsive design" },
+    ],
+  },
+  {
+    year: "2022",
+    category: "Backend",
+    skills: [
+      { name: "Node.js", detail: "Event-driven architecture" },
+      { name: "Express", detail: "REST APIs, middleware" },
+      { name: "MongoDB", detail: "NoSQL, Atlas cloud" },
+      { name: "SQL", detail: "Relational DB design" },
+    ],
+  },
+  {
+    year: "2023",
+    category: "AI / ML",
+    skills: [
+      { name: "Python", detail: "Data pipelines & scripting" },
+      { name: "TensorFlow", detail: "Deep learning models" },
+      { name: "PyTorch", detail: "Flexible ML experimentation" },
+      { name: "Scikit-learn", detail: "Classical ML algorithms" },
+    ],
+  },
+  {
+    year: "2024",
+    category: "Design & Animation",
+    skills: [
+      { name: "Framer Motion", detail: "Micro-interactions & motion design" },
+      { name: "shadcn/ui", detail: "Composable UI primitives" },
+      { name: "Lucide React", detail: "Iconography system" },
+    ],
+  },
+  {
+    year: "2025",
+    category: "Creative Coding",
+    skills: [
+      { name: "React Three Fiber", detail: "3D experiences in React" },
+      { name: "Storytelling", detail: "Narrative-driven UI flows" },
+      { name: "Modular Architecture", detail: "Scalable, reusable systems" },
+    ],
+  },
+]
 
-  // Variants for timeline items
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.3 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0 }
-  };
-
-  const skillVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: { opacity: 1, scale: 1 }
-  };
-
+function SkillChip({ skill }: { skill: { name: string; detail: string } }) {
   return (
-    <section className="max-w-4xl mx-auto px-4 py-12">
-      <motion.h1
-        className="text-4xl md:text-5xl font-extrabold text-center mb-8"
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className="relative px-4 py-2 rounded-full 
+                 bg-purple-100 dark:bg-purple-900/40 
+                 text-gray-900 dark:text-gray-100 text-sm cursor-pointer 
+                 border border-purple-500/40 
+                 transition-all duration-300 group"
+    >
+      {skill.name}
+      {/* Tooltip */}
+      <motion.div
+        initial={{ opacity: 0, y: 5 }}
+        whileHover={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 
+                   px-3 py-2 rounded-lg text-xs 
+                   bg-white dark:bg-black/70 
+                   text-gray-900 dark:text-gray-100 
+                   border border-purple-500/30 
+                   shadow-lg backdrop-blur-md 
+                   whitespace-nowrap pointer-events-none"
       >
-        Skill Timeline
+        {skill.detail}
+      </motion.div>
+    </motion.div>
+  )
+}
+
+export default function SkillsTimeline() {
+  return (
+    <section className="relative max-w-5xl mx-auto px-6 py-24">
+      {/* Heading */}
+      <motion.h1
+        className="text-5xl font-extrabold text-center mb-20 
+                   text-gray-900 dark:text-gray-100"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        My Skill Journey
       </motion.h1>
 
-      <motion.div
-        className="space-y-10"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {timeline.map((item, idx) => (
-          <motion.div
-            key={idx}
-            className="relative pl-6 border-l-4 border-indigo-500"
-            variants={itemVariants}
-          >
-            <div className="absolute -left-3 top-0 w-6 h-6 bg-indigo-500 rounded-full"></div>
-            <h3 className="text-xl font-semibold">
-              {item.year} — {item.title}
-            </h3>
-            <p className="mt-1">{item.note}</p>
+      <div className="relative">
+        {/* Timeline line */}
+        <div className="absolute left-1/2 top-0 h-full w-1 
+                        bg-gradient-to-b from-purple-500 to-pink-500 
+                        transform -translate-x-1/2" />
 
+        <div className="flex flex-col gap-24">
+          {skillTimeline.map((item, idx) => (
             <motion.div
-              className="flex flex-wrap gap-2 mt-3"
-              variants={containerVariants}
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className={`relative flex flex-col md:flex-row items-center ${
+                idx % 2 === 0 ? "md:flex-row-reverse" : ""
+              }`}
             >
-              {item.skills.map((skill, i) => (
-                <motion.span
-                  key={i}
-                  className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium"
-                  variants={skillVariants}
-                >
-                  {skill}
-                </motion.span>
-              ))}
+              {/* Marker */}
+              <div className="absolute left-1/2 w-6 h-6 rounded-full 
+                              bg-purple-500 border-4 border-pink-500 
+                              transform -translate-x-1/2 shadow-lg" />
+
+              {/* Panel */}
+              <div
+                className="md:w-1/2 p-8 rounded-2xl 
+                           bg-gray-50/90 dark:bg-gray-800/60 
+                           backdrop-blur-lg border border-gray-200 dark:border-gray-700 
+                           shadow-lg hover:shadow-xl 
+                           transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                  {item.year} — {item.category}
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  {item.skills.map((skill, i) => (
+                    <SkillChip key={i} skill={skill} />
+                  ))}
+                </div>
+              </div>
             </motion.div>
-          </motion.div>
-        ))}
-      </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
-  );
+  )
 }

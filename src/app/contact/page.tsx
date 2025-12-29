@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useForm } from 'react-hook-form';
-import { MdEmail, MdLocationOn, MdEventAvailable } from 'react-icons/md';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useForm } from "react-hook-form";
+import { MdEmail, MdLocationOn, MdEventAvailable } from "react-icons/md";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 type FormData = {
   name: string;
@@ -20,27 +20,32 @@ export default function Contact() {
   } = useForm<FormData>();
 
   const [status, setStatus] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: FormData) => {
+    setLoading(true);
+    setStatus(null);
     try {
-      const res = await fetch('https://formspree.io/f/xrbdkorr', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("https://formspree.io/f/xrbdkorr", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
       if (res.ok) {
-        setStatus('Message sent successfully!');
+        setStatus("success");
         reset();
       } else {
-        setStatus('Something went wrong. Please try again.');
+        setStatus("error");
       }
     } catch (err) {
-      setStatus('Error sending message.');
+      setStatus("error");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Variants for staggered animation
+  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -78,7 +83,7 @@ export default function Contact() {
         viewport={{ once: true }}
       >
         Every project I build is more than just code — it&apos;s a reflection of resilience,
-        curiosity, and a drive to create meaningful digital experiences. If my{' '}
+        curiosity, and a drive to create meaningful digital experiences. If my{" "}
         <span className="font-bold">work</span> resonates with you, I&apos;d love to connect.
       </motion.p>
 
@@ -123,7 +128,7 @@ export default function Contact() {
           ></iframe>
         </motion.div>
 
-        {/* Form with staggered animation */}
+        {/* Form */}
         <motion.div
           className="w-full md:w-1/2 rounded-lg"
           variants={containerVariants}
@@ -133,58 +138,80 @@ export default function Contact() {
         >
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-5">
             <motion.div variants={itemVariants}>
-              Your Name: <br/>
+              <label className="font-medium">Your Name:</label>
               <input
-                {...register('name', { required: 'Name is required' })}
+                {...register("name", { required: "Name is required" })}
                 placeholder="Your Name"
-                className="border p-2 mt-3 rounded w-[100%]"
+                className="border p-2 mt-2 rounded w-full"
               />
               {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              Your Email: <br />
+              <label className="font-medium">Your Email:</label>
               <input
-                {...register('email', {
-                  required: 'Email is required',
-                  pattern: { value: /^\S+@\S+$/i, message: 'Invalid email address' },
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: { value: /^\S+@\S+$/i, message: "Invalid email address" },
                 })}
                 placeholder="Your Email"
-                className="border p-2 rounded mt-3 w-[100%]"
+                className="border p-2 rounded mt-2 w-full"
               />
               {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              Your Message: <br />
+              <label className="font-medium">Your Message:</label>
               <textarea
-                {...register('message', { required: 'Message is required' })}
+                {...register("message", { required: "Message is required" })}
                 placeholder="Your Message"
                 rows={5}
-                className="border p-2 mt-3 rounded w-[100%]"
+                className="border p-2 mt-2 rounded w-full"
               />
-              {errors.message && <span className="text-red-500 text-sm">{errors.message.message}</span>}
+              {errors.message && (
+                <span className="text-red-500 text-sm">{errors.message.message}</span>
+              )}
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <motion.button
                 type="submit"
-                className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                disabled={loading}
+                className={`py-2 px-4 rounded text-white transition ${
+                  loading
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-blue-600 hover:bg-blue-700"
+                }`}
+                whileHover={{ scale: loading ? 1 : 1.05 }}
+                whileTap={{ scale: loading ? 1 : 0.95 }}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </motion.button>
             </motion.div>
 
-            {status && (
-              <motion.p
-                className="text-center text-sm mt-2"
-                variants={itemVariants}
-              >
-                {status}
-              </motion.p>
-            )}
+            {/* Feedback banners */}
+            <AnimatePresence>
+              {status === "success" && (
+                <motion.div
+                  className="mt-4 p-3 rounded bg-green-100 text-green-700 text-center"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                >
+                  Message sent successfully!
+                </motion.div>
+              )}
+              {status === "error" && (
+                <motion.div
+                  className="mt-4 p-3 rounded bg-red-100 text-red-700 text-center"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                >
+                  Something went wrong. Please try again.
+                </motion.div>
+              )}
+            </AnimatePresence>
           </form>
         </motion.div>
       </div>

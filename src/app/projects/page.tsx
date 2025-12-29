@@ -1,538 +1,454 @@
 "use client";
 
-import { useState, useEffect } from "react";
+/**
+ * Projects Page — Premium UI/UX (theme-aware, recruiter-friendly)
+ * - Smart segmented filter bar with polished labels
+ * - Theme-aware glassmorphism across cards and controls
+ * - Responsive grid + refined carousel (auto-rotate + arrows)
+ * - Micro-interactions with Framer Motion
+ * - Accessible focus rings, aria labels, consistent contrast
+ */
+
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  ExternalLink,
-  Github,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ExternalLink, Github, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-const projects = [
+/* Filters: recruiter-friendly labels */
+const FILTERS = ["All Projects", "Completed", "In Progress", "Launched", "Coming Soon"] as const;
+type Filter = (typeof FILTERS)[number];
+
+/* Project type */
+interface Project {
+  title: string;
+  status: "Completed" | "In Progress";
+  image: string;
+  tagline: string;
+  description: string;
+  tech: string[];
+  category: string;
+  live: string; // empty string if not deployed
+  github: string; // "#" or empty if not available
+}
+
+/* Data: your projects */
+const projects: Project[] = [
   {
     title: "To-do List Application",
     status: "Completed",
     image: "/tdla.png",
     tagline: "Organize tasks, code clean—daily done right.",
-    description:
-      "Modern task management app with drag & drop, priorities, and analytics.",
+    description: "Modern task management app with drag & drop, priorities, and analytics.",
     tech: ["React", "TypeScript", "Tailwind"],
+    category: "Productivity",
     live: "https://todo-gamma-mauve.vercel.app/",
     github: "https://github.com/bibash21-creator/Todo",
-    category: "Productivity",
   },
-
   {
     title: "Weather Dashboard Application",
-    status: "Ongoing",
+    status: "In Progress",
     image: "/weather.png",
     tagline: "Forecasts, insights, and clarity—weather made personal.",
     description:
       "Modern weather dashboard with hourly and weekly forecasts, air quality insights, and mood-based storytelling.",
     tech: ["Next.js", "TypeScript", "Tailwind", "OpenWeather API"],
+    category: "Utility",
     live: "https://weather-app-jet-sigma-84.vercel.app/",
     github: "https://github.com/bibash21-creator/WeatherDash",
-    category: "Utility",
   },
   {
-  title: "Notes Application",
-  status: "Ongoing",
-  image: "/notes.png",
-  tagline: "Organize thoughts, capture ideas, and keep learning alive.",
-  description:
-    "A modern notes application with secure signup/login, intuitive UI, and cloud-based storage powered by MongoDB Atlas. Designed for simplicity and productivity, it helps users create, manage, and access notes seamlessly across devices.",
-  tech: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Tailwind CSS"],
-  live: "",
-  github: "https://github.com/bibash21-creator/notes_app",
-  category: "Productivity",
-},
+    title: "Notes Application",
+    status: "In Progress",
+    image: "/notes.png",
+    tagline: "Organize thoughts, capture ideas, and keep learning alive.",
+    description:
+      "A modern notes application with secure signup/login, intuitive UI, and cloud-based storage powered by MongoDB Atlas.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Tailwind CSS"],
+    category: "Productivity",
+    live: "",
+    github: "https://github.com/bibash21-creator/notes_app",
+  },
   {
     title: "Hospital Management System",
-    status: "Ongoing",
+    status: "In Progress",
     image: "/hms.png",
     tagline: "Care meets code",
     description: "A patient and staff management system.",
     tech: ["JSX", "CSS3", "JS", "React"],
+    category: "Full Stack",
     live: "https://hospital-management-system-theta-jade.vercel.app/",
     github: "",
-    category: "Full Stack",
   },
   {
     title: "Ticket Application",
-    status: "Ongoing",
+    status: "In Progress",
     image: "/tms.png",
     tagline: "We Care For You",
-    description: "A ticket management system",
+    description: "A ticket management system.",
     tech: ["TailwindCSS", "Nextjs"],
-    live: "https://ticketing-app-black.vercel.app/",
-    github: "https://github.com/bibash21-creator/Ticketing_App",
     category: "Full Stack",
+    live: "",
+    github: "https://github.com/bibash21-creator/Ticketing_App",
   },
-
   {
     title: "BIT Result Checker Application",
     status: "Completed",
     image: "/brc.png",
     tagline: "Track your exam progress",
-    description:
-      "A Streamlit Application for checking your BIT results with ML integration.",
+    description: "A Streamlit Application for checking your BIT results with ML integration.",
     tech: ["Streamlit", "Pandas", "Machine Learning"],
+    category: "Data Science",
     live: "https://bitresult079.streamlit.app/",
     github: "https://github.com/bibash21-creator/Result_Checker",
-    category: "Data Science",
   },
-
   {
     title: "Modern Calculator App",
     status: "Completed",
     image: "/calculator.png",
     tagline: "Precision meets simplicity",
-    description:
-      "A sleek, responsive calculator built to explore modular UI design and arithmetic logic.",
+    description: "A sleek, responsive calculator built to explore modular UI design and arithmetic logic.",
     tech: ["HTML5", "CSS3", "JS"],
+    category: "Web App",
     live: "https://calculator-seven-sage-81.vercel.app/",
     github: "#",
-    category: "Web App",
   },
-
   {
     title: "Recipe Page App",
     status: "Completed",
     image: "/recipe.png",
     tagline: "Deliciously organized",
-    description:
-      "A recipe browsing interface with clean layout and dynamic filtering — built for clarity and UX.",
+    description: "A recipe browsing interface with clean layout and dynamic filtering.",
     tech: ["HTML5", "CSS3", "JavaScript"],
+    category: "Web Design",
     live: "https://recipe-page-rho-gold.vercel.app/",
     github: "#",
-    category: "Web Design",
   },
   {
     title: "School Management System",
-    status: "Ongoing",
+    status: "In Progress",
     image: "/sms.png",
     tagline: "Structure for learning",
     description:
       "A comprehensive student and teacher management system with real-time analytics.",
     tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+    category: "Full Stack",
     live: "https://school-management-system-ten-pi.vercel.app/",
     github: "#",
-    category: "Full Stack",
   },
 ];
 
-export default function ProjectSection() {
-  const [filter, setFilter] = useState<"All" | "Completed" | "Ongoing">("All");
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [viewMode, setViewMode] = useState<"grid" | "carousel">("grid");
-  const [carouselIndex, setCarouselIndex] = useState(0);
+/* Motion variants */
+const listVariants = {
+  initial: { opacity: 0 },
+  enter: { opacity: 1, transition: { staggerChildren: 0.06 } },
+};
 
-  const filteredProjects =
-    filter === "All" ? projects : projects.filter((p) => p.status === filter);
+const cardVariants = {
+  initial: { opacity: 0, y: 16 },
+  enter: { opacity: 1, y: 0, transition: { duration: 0.32 } },
+};
 
-  // Auto-rotate carousel
-  useEffect(() => {
-    if (viewMode !== "carousel") return;
+/* Smart deployment badge (Launched / Coming Soon) */
+function DeploymentBadge({ live }: { live?: string }) {
+  const isLive = !!live?.trim();
+  const label = isLive ? "Launched" : "Coming Soon";
+  const bg = isLive ? "bg-green-600/85" : "bg-red-600/85";
+  return <span className={`px-3 py-1 text-xs rounded-full ${bg} text-white`}>{label}</span>;
+}
 
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % filteredProjects.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [viewMode, filteredProjects.length]);
-
-  const nextSlide = () => {
-    setCarouselIndex((prev) => (prev + 1) % filteredProjects.length);
-  };
-
-  const prevSlide = () => {
-    setCarouselIndex(
-      (prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length
-    );
-  };
+/* Glass arrow button for carousel */
+function CarouselArrow({
+  side,
+  onClick,
+}: {
+  side: "left" | "right";
+  onClick: () => void;
+}) {
+  const Icon = side === "left" ? ChevronLeft : ChevronRight;
+  const positionClass = side === "left" ? "left-0" : "right-0";
 
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-indigo-50/20 to-white dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 -z-10" />
-      <div className="absolute top-20 right-20 w-72 h-72 bg-indigo-300/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-20 left-20 w-72 h-72 bg-purple-300/10 rounded-full blur-3xl -z-10" />
+    <button
+      onClick={onClick}
+      aria-label={side === "left" ? "Previous project" : "Next project"}
+      className={`absolute ${positionClass} top-1/2 -translate-y-1/2 p-3 rounded-full
+                  bg-white/70 dark:bg-gray-800/70 backdrop-blur-md
+                  border border-gray-200 dark:border-gray-700
+                  shadow-md hover:scale-105 transition
+                  focus-visible:ring-2 focus-visible:ring-purple-400`}
+    >
+      <Icon className="w-5 h-5 text-gray-800 dark:text-gray-100" />
+    </button>
+  );
+}
 
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-full mb-6"></div>
+/* Empty state: theme-aware, friendly */
+function EmptyState() {
+  return (
+    <div className="rounded-2xl p-10 border border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/40 backdrop-blur-lg text-center">
+      <p className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        No projects match this filter
+      </p>
+      <p className="text-gray-600 dark:text-gray-400">
+        Try changing filters or explore all projects below.
+      </p>
+    </div>
+  );
+}
 
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-700 dark:from-white dark:via-indigo-200 dark:to-purple-300 bg-clip-text text-transparent">
-            Portfolio Showcase
-          </h1>
+/* Project Card */
+function ProjectCard({ p }: { p: Project }) {
+  const hasLive = !!p.live?.trim();
+  const hasValidGit = !!(p.github?.trim() && p.github !== "#");
 
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-10">
-            A curated collection of my finest work, blending cutting-edge
-            technology with exceptional user experience. Each project tells a
-            story of innovation and craftsmanship.
-          </p>
+  return (
+    <motion.article
+      variants={cardVariants}
+      initial="initial"
+      animate="enter"
+      whileHover={{ y: -6, scale: 1.02 }}
+      transition={{ duration: 0.25 }}
+      className="rounded-2xl overflow-hidden bg-white/70 dark:bg-gray-900/40 backdrop-blur-lg border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl transition-all"
+      aria-label={`${p.title} project card`}
+    >
+      {/* Media */}
+      <div className="relative h-56">
+        <Image
+          src={p.image}
+          alt={`${p.title} cover image`}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={false}
+        />
+        <div className="absolute top-3 left-3 flex gap-2">
+          <span className="px-3 py-1 text-xs rounded-full bg-purple-600/85 text-white">
+            {p.status}
+          </span>
+          <DeploymentBadge live={p.live} />
+        </div>
+      </div>
 
-          {/* View Mode Toggle */}
-          <div className="flex justify-center items-center gap-4 mb-8">
+      {/* Content */}
+      <div className="p-6 space-y-3">
+        <header className="space-y-1">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{p.title}</h3>
+          <p className="text-sm italic text-gray-600 dark:text-gray-400">{p.tagline}</p>
+        </header>
+
+        <p className="text-sm line-clamp-2 text-gray-700 dark:text-gray-300">{p.description}</p>
+
+        {/* Tech stack */}
+        <ul className="flex flex-wrap gap-2" aria-label="Technology stack">
+          {p.tech.map((t) => (
+            <motion.li
+              key={t}
+              whileHover={{ scale: 1.05 }}
+              className="px-3 py-1 text-xs rounded-lg bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-200 border border-purple-300 dark:border-purple-700"
+              aria-label={t}
+            >
+              {t}
+            </motion.li>
+          ))}
+        </ul>
+
+        {/* Actions */}
+        <div className="flex gap-3">
+          {hasLive && (
             <Button
+              asChild
+              size="sm"
+              className="bg-purple-600 hover:bg-purple-700 text-white focus:ring-2 focus:ring-purple-400"
+            >
+              <a href={p.live} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-4 h-4 mr-1" /> Live
+              </a>
+            </Button>
+          )}
+          {hasValidGit && (
+            <Button
+              asChild
               variant="outline"
               size="sm"
-              onClick={() => setViewMode("grid")}
-              className={`gap-2 ${
-                viewMode === "grid"
-                  ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-700"
-                  : ""
-              }`}
+              className="hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-200 focus:ring-2 focus:ring-purple-400"
             >
-              Grid View
+              <a href={p.github} target="_blank" rel="noopener noreferrer">
+                <Github className="w-4 h-4 mr-1" /> Code
+              </a>
             </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setViewMode("carousel")}
-              className={`gap-2 ${
-                viewMode === "carousel"
-                  ? "bg-indigo-50 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-700"
-                  : ""
-              }`}
-            >
-              Carousel View
-            </Button>
-          </div>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  );
+}
 
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {["All", "Completed", "Ongoing"].map((status) => (
+/* Page: filters, view controls, grid/carousel */
+export default function ProjectPage() {
+  const [filter, setFilter] = useState<Filter>("All Projects");
+  const [view, setView] = useState<"grid" | "carousel">("grid");
+  const [index, setIndex] = useState(0);
+  const intervalRef = useRef<number | null>(null);
+
+  /* Derived list */
+  const filtered = useMemo(() => {
+    switch (filter) {
+      case "All Projects":
+        return projects;
+      case "Completed":
+      case "In Progress":
+        return projects.filter((p) => p.status === filter);
+      case "Launched":
+        return projects.filter((p) => p.live?.trim());
+      case "Coming Soon":
+        return projects.filter((p) => !p.live?.trim());
+      default:
+        return projects;
+    }
+  }, [filter]);
+
+  /* Carousel rotation */
+  const rotate = (d = 1) => {
+    setIndex((i) => (filtered.length ? (i + d + filtered.length) % filtered.length : 0));
+  };
+
+  /* Reset index when filter changes */
+  useEffect(() => {
+    setIndex(0);
+  }, [filter]);
+
+  /* Auto-rotate carousel */
+  useEffect(() => {
+    if (view === "carousel" && filtered.length > 1) {
+      intervalRef.current = window.setInterval(() => rotate(1), 5000);
+      return () => {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      };
+    }
+    return;
+  }, [view, filtered.length]);
+
+  return (
+    <section className="py-20 max-w-7xl mx-auto px-6">
+      {/* Heading */}
+      <motion.h1
+        className="text-5xl font-extrabold text-center mb-12 text-gray-900 dark:text-gray-100"
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
+      >
+        Portfolio Showcase
+      </motion.h1>
+
+      {/* Smart Filter Bar (segmented control) */}
+      <div className="flex flex-col items-center gap-4 mb-10">
+        <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
+          {FILTERS.map((f) => {
+            const active = filter === f;
+            return (
               <motion.button
-                key={status}
-                whileHover={{ scale: 1.05 }}
+                key={f}
+                onClick={() => setFilter(f)}
+                aria-pressed={active}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setFilter(status as any)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  filter === status
-                    ? "bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-500/25"
-                    : "bg-white dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-zinc-700 border border-gray-200 dark:border-zinc-700"
-                }`}
+                className={`relative px-5 py-2 text-sm font-medium rounded-full transition-colors
+                            ${active
+                              ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                              : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"}`}
               >
-                {status}{" "}
-                {status !== "All" &&
-                  `(${projects.filter((p) => p.status === status).length})`}
+                {f}
               </motion.button>
-            ))}
-          </div>
-        </motion.div>
+            );
+          })}
+        </div>
 
-        {/* Projects Display */}
-        <AnimatePresence mode="wait">
-          {viewMode === "grid" ? (
-            <motion.div
-              key="grid"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-            >
-              {filteredProjects.map((project, index) => (
+        {/* View toggle (Grid / Carousel) */}
+        <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
+          {(["grid", "carousel"] as const).map((v) => {
+            const active = view === v;
+            return (
+              <motion.button
+                key={v}
+                onClick={() => setView(v)}
+                aria-pressed={active}
+                whileTap={{ scale: 0.95 }}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors
+                            ${active
+                              ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                              : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"}`}
+              >
+                {v === "grid" ? "Grid" : "Carousel"}
+              </motion.button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Content */}
+      <AnimatePresence mode="wait">
+        {view === "grid" ? (
+          <motion.div
+            variants={listVariants}
+            initial="initial"
+            animate="enter"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {filtered.length ? (
+              filtered.map((p) => <ProjectCard key={p.title} p={p} />)
+            ) : (
+              <div className="col-span-full">
+                <EmptyState />
+              </div>
+            )}
+          </motion.div>
+        ) : (
+          <motion.div className="relative h-[540px]">
+            <CarouselArrow side="left" onClick={() => rotate(-1)} />
+            <CarouselArrow side="right" onClick={() => rotate(1)} />
+
+            <AnimatePresence mode="wait">
+              {filtered.length ? (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -8 }}
-                  onMouseEnter={() => setHoveredIndex(index)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                  className="group relative bg-gradient-to-br from-white to-gray-50 dark:from-zinc-900 dark:to-zinc-800 
-                           border border-gray-100 dark:border-zinc-800 rounded-2xl overflow-hidden 
-                           shadow-sm hover:shadow-2xl transition-all duration-500"
+                  initial={{ x: 80, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -80, opacity: 0 }}
+                  transition={{ duration: 0.35 }}
+                  className="max-w-xl mx-auto"
                 >
-                  {/* Status Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                        project.status === "Completed"
-                          ? "bg-green-500/10 text-green-700 dark:text-green-400"
-                          : "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400"
-                      }`}
-                    >
-                      {project.status}
-                    </span>
+                  <ProjectCard p={filtered[index]} />
+                  <div className="mt-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                    {index + 1} / {filtered.length}
                   </div>
-
-                  {/* Project Image */}
-                  <div className="relative h-56 overflow-hidden bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-zinc-800 dark:to-zinc-900">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-
-                    {/* Category Tag */}
-                    <span className="absolute bottom-4 left-4 px-3 py-1 bg-black/70 backdrop-blur-sm text-white text-xs font-medium rounded-full">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                        {project.title}
-                      </h3>
-                      {hoveredIndex === index && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          className="text-indigo-600 dark:text-indigo-400"
-                        >
-                          <ArrowRight className="w-5 h-5" />
-                        </motion.div>
-                      )}
-                    </div>
-
-                    <p className="text-sm text-gray-500 dark:text-gray-400 italic mb-3">
-                      {project.tagline}
-                    </p>
-
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-                      {project.description}
-                    </p>
-
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((tech, j) => (
-                        <motion.span
-                          key={j}
-                          whileHover={{ scale: 1.1 }}
-                          className="px-3 py-1.5 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-zinc-800 dark:to-zinc-700 
-                                   text-indigo-700 dark:text-indigo-300 text-xs font-medium rounded-lg
-                                   border border-indigo-100 dark:border-indigo-900/50"
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <Button
-                        asChild
-                        className="flex-1 gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
-                      >
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          Live Demo
-                        </a>
-                      </Button>
-
-                      <Button
-                        variant="outline"
-                        asChild
-                        className="flex-1 gap-2"
-                      >
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="w-4 h-4" />
-                          Code
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Hover Glow Effect */}
-                  <div
-                    className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-purple-500/0 to-pink-500/0 
-                                group-hover:via-indigo-500/5 group-hover:to-pink-500/5 transition-all duration-500 
-                                pointer-events-none -z-10"
-                  />
                 </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key="carousel"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="relative"
-            >
-              {/* Carousel Navigation */}
-              <div className="absolute top-1/2 left-0 right-0 z-20 flex justify-between px-4 transform -translate-y-1/2">
-                <button
-                  onClick={prevSlide}
-                  className="p-3 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm 
-                           border border-gray-200 dark:border-zinc-700 shadow-lg hover:shadow-xl 
-                           hover:scale-110 transition-all duration-300"
+              ) : (
+                <motion.div
+                  key="empty"
+                  className="flex items-center justify-center h-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                 >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="p-3 rounded-full bg-white/80 dark:bg-zinc-800/80 backdrop-blur-sm 
-                           border border-gray-200 dark:border-zinc-700 shadow-lg hover:shadow-xl 
-                           hover:scale-110 transition-all duration-300"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
+                  <EmptyState />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-              {/* Carousel Container */}
-              <div className="relative h-[600px] overflow-hidden rounded-3xl">
-                <AnimatePresence mode="wait">
-                  {filteredProjects.map(
-                    (project, index) =>
-                      index === carouselIndex && (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: 100 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -100 }}
-                          transition={{ duration: 0.5 }}
-                          className="absolute inset-0 grid lg:grid-cols-2 gap-8"
-                        >
-                          {/* Project Image */}
-                          <div className="relative h-full overflow-hidden rounded-2xl">
-                            <Image
-                              src={project.image}
-                              alt={project.title}
-                              fill
-                              className="object-cover"
-                              sizes="50vw"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
-
-                            {/* Project Info Overlay */}
-                            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                              <div className="flex items-center gap-4 mb-4">
-                                <span
-                                  className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                                    project.status === "Completed"
-                                      ? "bg-green-500/20 text-green-300"
-                                      : "bg-yellow-500/20 text-yellow-300"
-                                  }`}
-                                >
-                                  {project.status}
-                                </span>
-                                <span className="px-4 py-2 bg-white/10 backdrop-blur-sm text-white text-sm font-medium rounded-full">
-                                  {project.category}
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-
-                          {/* Project Details */}
-                          <div className="flex flex-col justify-center p-8 lg:p-12 bg-white dark:bg-zinc-900">
-                            <h3 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                              {project.title}
-                            </h3>
-                            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-                              {project.description}
-                            </p>
-
-                            {/* Tech Stack */}
-                            <div className="flex flex-wrap gap-3 mb-8">
-                              {project.tech.map((tech, j) => (
-                                <span
-                                  key={j}
-                                  className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-purple-100 
-                                         dark:from-indigo-900/30 dark:to-purple-900/30 
-                                         text-indigo-700 dark:text-indigo-300 font-medium rounded-lg"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-
-                            {/* Action Buttons */}
-                            <div className="flex gap-4">
-                              <Button
-                                asChild
-                                size="lg"
-                                className="gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
-                              >
-                                <Link href={project.live} target="_blank">
-                                  <ExternalLink className="w-5 h-5" />
-                                  View Live Project
-                                </Link>
-                              </Button>
-                              <Button
-                                variant="outline"
-                                size="lg"
-                                asChild
-                                className="gap-3"
-                              >
-                                <Link href={project.github} target="_blank">
-                                  <Github className="w-5 h-5" />
-                                  Source Code
-                                </Link>
-                              </Button>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Carousel Indicators */}
-              <div className="flex justify-center gap-3 mt-8">
-                {filteredProjects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCarouselIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === carouselIndex
-                        ? "w-8 bg-gradient-to-r from-indigo-600 to-purple-600"
-                        : "bg-gray-300 dark:bg-zinc-700 hover:bg-gray-400 dark:hover:bg-zinc-600"
-                    }`}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
+      {/* Footer CTA */}
+      <div className="text-center mt-16">
+        <Button
+          asChild
+          size="lg"
+          className="bg-purple-600 hover:bg-purple-700 text-white focus:ring-2 focus:ring-purple-400"
         >
-          <Button
-            asChild
-            size="lg"
-            className="gap-3 px-8 py-6 text-lg bg-gradient-to-r from-indigo-600 to-purple-600 
-                     hover:from-indigo-700 hover:to-purple-700 hover:shadow-2xl 
-                     hover:shadow-indigo-500/25 transition-all duration-300"
-          >
-            <Link href="/projects">
-              View All Projects
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </Button>
-        </motion.div>
+          <Link href="/projects">
+            View All Projects <ArrowRight className="ml-2" />
+          </Link>
+        </Button>
       </div>
     </section>
   );

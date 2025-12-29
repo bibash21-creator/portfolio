@@ -125,6 +125,12 @@
   }
 }
 
+@layer utilities {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+  }
+}
+
 
 .container{
   padding: 0 4rem;
