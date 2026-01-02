@@ -93,7 +93,7 @@ export default function Hero() {
               
               priority
               width={500}
-              height={500}
+              height={800}
               className="rounded-full object-cover"
             />
           </div>
