@@ -342,27 +342,52 @@ export default function ProjectPage() {
         Portfolio Showcase
       </motion.h1>
 
-      {/* Smart Filter Bar (segmented control) */}
-      <div className="flex flex-col items-center gap-4 mb-10">
-        <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
-          {FILTERS.map((f) => {
-            const active = filter === f;
-            return (
-              <motion.button
-                key={f}
-                onClick={() => setFilter(f)}
-                aria-pressed={active}
-                whileTap={{ scale: 0.95 }}
-                className={`relative px-5 py-2 text-sm font-medium rounded-full transition-colors
-                            ${active
-                              ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
-                              : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"}`}
-              >
-                {f}
-              </motion.button>
-            );
-          })}
-        </div>
+     {/* Responsive Filter Bar — Grid Based (No Scroll, No Overflow) */}
+<div className="flex justify-center mb-10 w-full">
+  <div
+    className="
+      grid
+      grid-cols-2
+      sm:grid-cols-3
+      md:grid-cols-5
+      gap-2
+      bg-gray-100 dark:bg-gray-800
+      p-2
+      rounded-2xl
+      shadow-inner
+      w-full
+      max-w-4xl
+    "
+  >
+    {FILTERS.map((f) => {
+      const active = filter === f;
+      return (
+        <motion.button
+          key={f}
+          onClick={() => setFilter(f)}
+          aria-pressed={active}
+          whileTap={{ scale: 0.95 }}
+          className={`
+            w-full
+            px-3 py-2
+            text-xs sm:text-sm
+            font-medium
+            rounded-xl
+            transition-all
+            ${
+              active
+                ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
+                : "bg-white/70 dark:bg-gray-900/40 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
+            }
+          `}
+        >
+          {f}
+        </motion.button>
+      );
+    })}
+  </div>
+</div>
+
 
         {/* View toggle (Grid / Carousel) */}
         <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
@@ -384,7 +409,6 @@ export default function ProjectPage() {
             );
           })}
         </div>
-      </div>
 
       {/* Content */}
       <AnimatePresence mode="wait">
