@@ -1,0 +1,50 @@
+🌐 Modern Developer Portfolio – Built with Next.js & React
+
+This repository contains a modern, responsive portfolio website built using Next.js and React. Designed as a personal showcase platform, it highlights the creator’s projects, professional philosophy, and journey as a developer. The project is bootstrapped with Create Next App and deployed seamlessly on Vercel using a CI-enabled production setup.
+
+With a growing commit history (10 commits so far), the portfolio continues to evolve—recent updates include the addition of new projects and UI refinements.
+
+🚀 Features
+
+Personal Portfolio Website: A digital presence to showcase skills, projects, and accomplishments.
+
+Responsive Design: Fully optimized for mobile, tablet, and desktop devices.
+
+Project Showcase: Displays professional work, developer journey, and coding philosophy.
+
+Modern Development Workflow: Supports fast development with auto-reloading and efficient bundling.
+
+Optimized Fonts: Uses Next.js built-in font optimization for improved performance.
+
+Production Deployment: Hosted on Vercel with continuous deployment for smooth updates.
+
+🛠️ Tech Stack
+
+Frontend Framework: Next.js, React
+Language: TypeScript (87.2%)
+Styling: Tailwind CSS + CSS (11.3%)
+Other: JavaScript (1.5%)
+Build Tool: Create Next App
+Deployment: Vercel
+Package Manager: npm / yarn / pnpm / bun
+
+📦 Getting Started
+
+Clone the repository and install dependencies:
+
+git clone <repo-url>
+cd <project-folder>
+npm install
+# or yarn / pnpm / bun
+
+
+Run the development server:
+
+npm run dev
+
+
+Open http://localhost:3000 to view the project.
+
+📤 Deployment
+
+The project is deployed on Vercel, supporting automatic builds and instant updates on every push to the main branch.
