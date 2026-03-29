@@ -37,17 +37,17 @@ export default function Hero() {
           {/* Buttons */}
           <div className="flex flex-col gap-y-5 md:flex-row md:gap-x-5 mb-7 justify-center md:justify-start mt-6">
             <Button variant="outline">
-              <Link href="/projects" target="_blank" className="flex items-center gap-3">
+              <Link href="/projects" className="flex items-center gap-3">
                 <FiFolder /> View Projects
               </Link>
             </Button>
-            <Button variant="outline">
-              <Link href="/bibash.pdf" target="_blank" download="bibash.pdf" className="flex items-center gap-3">
-                <FiDownload /> Download Resume
+            <Button>
+              <Link href="/resume" className="flex items-center gap-3">
+                <FiDownload /> My Resume
               </Link>
             </Button>
             <Button variant="outline">
-              <Link href="/contact" target="_blank" className="flex items-center gap-3">
+              <Link href="/contact" className="flex items-center gap-3">
                 <FiMail /> Contact Me
               </Link>
             </Button>
