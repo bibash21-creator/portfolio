@@ -1,8 +1,8 @@
 'use client';
 
-import OrbitingSkillsScene from "@/app/helpers/Animateone";
-import GitHubStats from "@/app/components/GitHubStats";
-import { motion } from "framer-motion";
+import OrbitingSkillsScene from '@/components/Animateone';
+import GitHubStats from '@/components/GitHubStats';
+import { motion } from 'framer-motion';
 
 export default function About() {
   // Variants for staggered children
@@ -52,14 +52,13 @@ export default function About() {
             className="text-xl md:text-2xl font-bold mb-4 sm:text-center"
             variants={itemVariants}
           >
-            I'm a passionate developer who loves creating meaningful digital products.
+            I'm a passionate developer who loves creating meaningful digital
+            products.
           </motion.h2>
 
-          <motion.p
-            className="text-md md:text-lg mb-2"
-            variants={itemVariants}
-          >
-            My coding journey began in college, and I instantly got hooked on building interactive web apps.
+          <motion.p className="text-md md:text-lg mb-2" variants={itemVariants}>
+            My coding journey began in college, and I instantly got hooked on
+            building interactive web apps.
           </motion.p>
 
           {/* Strengths */}
@@ -68,10 +67,10 @@ export default function About() {
             variants={containerVariants}
           >
             {[
-              "Strong Problem-Solving Mindset",
-              "Attention to detail and clean UI design",
-              "Always learning and experimenting",
-              "Love for performance optimization",
+              'Strong Problem-Solving Mindset',
+              'Attention to detail and clean UI design',
+              'Always learning and experimenting',
+              'Love for performance optimization',
             ].map((strength, index) => (
               <motion.div
                 key={index}
@@ -84,15 +83,21 @@ export default function About() {
           </motion.div>
 
           {/* Personal Touch */}
-          <motion.div className="personal_touch space-y-2" variants={itemVariants}>
+          <motion.div
+            className="personal_touch space-y-2"
+            variants={itemVariants}
+          >
             <h2 className="text-xl font-semibold">Hobbies:</h2>
             <p className="text-md text-gray-700 dark:text-gray-300">
-              Exploring tech, journaling, watching WWE, F1, Football and experimenting with animations.
+              Exploring tech, journaling, watching WWE, F1, Football and
+              experimenting with animations.
             </p>
 
             <h2 className="text-xl font-semibold mt-4">Interests:</h2>
             <p className="text-md text-gray-700 dark:text-gray-300">
-              Full-stack development, AI/ML, modular architecture, emotional storytelling through design, and building tools that reflect resilience.
+              Full-stack development, AI/ML, modular architecture, emotional
+              storytelling through design, and building tools that reflect
+              resilience.
             </p>
           </motion.div>
         </motion.div>

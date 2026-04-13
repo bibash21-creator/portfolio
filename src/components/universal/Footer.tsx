@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import Link from 'next/link';
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -9,14 +9,14 @@ export default function Footer() {
   return (
     <footer className="w-full  bg-white dark:bg-black py-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-        
         {/* 1. About / Brand */}
         <div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
             Bibash Poudel
           </h3>
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            Building resilient, recruiter‑ready digital experiences with a blend of creativity and code.
+            Building resilient, recruiter‑ready digital experiences with a blend
+            of creativity and code.
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
             © {year} Bibash Poudel · All rights reserved
@@ -30,21 +30,29 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
-              <Link href="/" className="hover:text-purple-600 transition-colors">
+              <Link
+                href="/"
+                className="hover:text-purple-600 transition-colors"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/projects" className="hover:text-purple-600 transition-colors">
+              <Link
+                href="/projects"
+                className="hover:text-purple-600 transition-colors"
+              >
                 Projects
               </Link>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-purple-600 transition-colors">
+              <Link
+                href="/contact"
+                className="hover:text-purple-600 transition-colors"
+              >
                 Contact
               </Link>
             </li>
-            
           </ul>
         </div>
 

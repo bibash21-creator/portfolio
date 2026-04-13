@@ -8,12 +8,14 @@ export default function Resume() {
     {
       icon: Target,
       title: 'Technical Skills',
-      description: 'Complete list of languages, frameworks, and tools I\'ve mastered',
+      description:
+        "Complete list of languages, frameworks, and tools I've mastered",
     },
     {
       icon: Award,
       title: 'Professional Experience',
-      description: 'Detailed work history with achievements and project outcomes',
+      description:
+        'Detailed work history with achievements and project outcomes',
     },
     {
       icon: FileText,
@@ -45,8 +47,9 @@ export default function Resume() {
             My Resume
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            Comprehensive overview of my skills, experience, and professional achievements. 
-            Download to see detailed information about my background.
+            Comprehensive overview of my skills, experience, and professional
+            achievements. Download to see detailed information about my
+            background.
           </p>
 
           {/* Main Download Button */}

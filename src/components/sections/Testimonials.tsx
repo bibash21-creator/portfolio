@@ -19,7 +19,7 @@ const testimonials: Testimonial[] = [
     company: 'Tech Startup',
     text: 'Bibash delivered a high-quality weather dashboard that exceeded our expectations. Clean code, excellent communication, and a keen eye for UX design. Highly recommend!',
     rating: 5,
-    image: '👨‍💼'
+    image: '👨‍💼',
   },
   {
     name: 'Sarah Chen',
@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
     company: 'Education Platform',
     text: 'Working with Bibash on the school management system was a pleasure. He is thorough, proactive, and genuinely cares about building products that users love.',
     rating: 5,
-    image: '👩‍💻'
+    image: '👩‍💻',
   },
   {
     name: 'Michael Ross',
@@ -35,7 +35,7 @@ const testimonials: Testimonial[] = [
     company: 'Healthcare Solutions',
     text: 'Bibash developed our hospital management system with impressive attention to detail and performance optimization. A developer you can trust.',
     rating: 5,
-    image: '👨‍🏫'
+    image: '👨‍🏫',
   },
   {
     name: 'Emma Davis',
@@ -43,7 +43,7 @@ const testimonials: Testimonial[] = [
     company: 'Design Studio',
     text: 'Great eye for design and implementation. Bibash translates complex requirements into elegant, user-friendly interfaces with clean code.',
     rating: 5,
-    image: '👩‍🎨'
+    image: '👩‍🎨',
   },
   {
     name: 'James Wilson',
@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
     company: 'SaaS Company',
     text: 'Reliable, skilled, and always delivers on time. Bibash is the kind of developer every team needs. Looking forward to future collaborations!',
     rating: 5,
-    image: '👨‍💼'
+    image: '👨‍💼',
   },
   {
     name: 'Lisa Park',
@@ -59,8 +59,8 @@ const testimonials: Testimonial[] = [
     company: 'Tech Consulting',
     text: 'Impressive full-stack capabilities and a passion for learning. Bibash brings fresh ideas and solid technical execution to every project.',
     rating: 5,
-    image: '👩‍💻'
-  }
+    image: '👩‍💻',
+  },
 ];
 
 export default function Testimonials() {
@@ -68,8 +68,8 @@ export default function Testimonials() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
+      transition: { staggerChildren: 0.1 },
+    },
   };
 
   const cardVariants = {
@@ -77,8 +77,8 @@ export default function Testimonials() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5 }
-    }
+      transition: { duration: 0.5 },
+    },
   };
 
   return (
@@ -94,7 +94,8 @@ export default function Testimonials() {
           What Others Say
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-          Feedback from clients and collaborators about working with me on projects.
+          Feedback from clients and collaborators about working with me on
+          projects.
         </p>
       </motion.div>
 
@@ -135,7 +136,8 @@ export default function Testimonials() {
                   {testimonial.name}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {testimonial.role} at <span className="font-medium">{testimonial.company}</span>
+                  {testimonial.role} at{' '}
+                  <span className="font-medium">{testimonial.company}</span>
                 </p>
               </div>
             </div>
@@ -155,9 +157,21 @@ export default function Testimonials() {
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { icon: '✓', title: 'Quality Code', desc: 'Well-structured, maintainable, and tested code' },
-            { icon: '⏱️', title: 'Timely Delivery', desc: 'Meets deadlines while maintaining quality standards' },
-            { icon: '🤝', title: 'Communication', desc: 'Regular updates and transparent collaboration' }
+            {
+              icon: '✓',
+              title: 'Quality Code',
+              desc: 'Well-structured, maintainable, and tested code',
+            },
+            {
+              icon: '⏱️',
+              title: 'Timely Delivery',
+              desc: 'Meets deadlines while maintaining quality standards',
+            },
+            {
+              icon: '🤝',
+              title: 'Communication',
+              desc: 'Regular updates and transparent collaboration',
+            },
           ].map((item, idx) => (
             <motion.div
               key={idx}

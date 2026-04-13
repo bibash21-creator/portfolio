@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * Projects Page — Premium UI/UX (theme-aware, recruiter-friendly)
@@ -9,21 +9,33 @@
  * - Accessible focus rings, aria labels, consistent contrast
  */
 
-import { useState, useEffect, useMemo, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useMemo, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import {
+  ExternalLink,
+  Github,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
 /* Filters: recruiter-friendly labels */
-const FILTERS = ["All Projects", "Completed", "In Progress", "Launched", "Coming Soon"] as const;
+const FILTERS = [
+  'All Projects',
+  'Completed',
+  'In Progress',
+  'Launched',
+  'Coming Soon',
+] as const;
 type Filter = (typeof FILTERS)[number];
 
 /* Project type */
 interface Project {
   title: string;
-  status: "Completed" | "In Progress";
+  status: 'Completed' | 'In Progress';
   image: string;
   tagline: string;
   description: string;
@@ -36,106 +48,118 @@ interface Project {
 /* Data: your projects */
 const projects: Project[] = [
   {
-    title: "To-do List Application",
-    status: "Completed",
-    image: "/tdla.png",
-    tagline: "Organize tasks, code clean—daily done right.",
-    description: "Intuitive task management app featuring drag-and-drop functionality, priority levels, and completion analytics. Built to improve daily productivity with a focus on clean, responsive UI.",
-    tech: ["React", "TypeScript", "Tailwind"],
-    category: "Productivity",
-    live: "https://todo-gamma-mauve.vercel.app/",
-    github: "https://github.com/bibash21-creator/Todo",
-  },
-  {
-    title: "Weather Dashboard Application",
-    status: "In Progress",
-    image: "/weather.png",
-    tagline: "Forecasts, insights, and clarity—weather made personal.",
+    title: 'To-do List Application',
+    status: 'Completed',
+    image: '/tdla.png',
+    tagline: 'Organize tasks, code clean—daily done right.',
     description:
-      "Comprehensive weather dashboard with real-time data, hourly forecasts, weekly predictions, and air quality metrics. Integrates OpenWeather API with mood-based storytelling to enhance user engagement.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "OpenWeather API"],
-    category: "Utility",
-    live: "https://weather-app-jet-sigma-84.vercel.app/",
-    github: "https://github.com/bibash21-creator/WeatherDash",
+      'Intuitive task management app featuring drag-and-drop functionality, priority levels, and completion analytics. Built to improve daily productivity with a focus on clean, responsive UI.',
+    tech: ['React', 'TypeScript', 'Tailwind'],
+    category: 'Productivity',
+    live: 'https://todo-gamma-mauve.vercel.app/',
+    github: 'https://github.com/bibash21-creator/Todo',
   },
   {
-    title: "Notes Application",
-    status: "In Progress",
-    image: "/notes.png",
-    tagline: "Organize thoughts, capture ideas, and keep learning alive.",
+    title: 'Weather Dashboard Application',
+    status: 'In Progress',
+    image: '/weather.png',
+    tagline: 'Forecasts, insights, and clarity—weather made personal.',
     description:
-      "Full-stack notes app with secure user authentication, cloud-based storage via MongoDB Atlas, and intuitive categorization. Implements JWT authentication and follows modern API standards for 100% data persistence.",
-    tech: ["React.js", "Node.js", "Express.js", "MongoDB Atlas", "Tailwind CSS"],
-    category: "Productivity",
-    live: "",
-    github: "https://github.com/bibash21-creator/notes_app",
+      'Comprehensive weather dashboard with real-time data, hourly forecasts, weekly predictions, and air quality metrics. Integrates OpenWeather API with mood-based storytelling to enhance user engagement.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'OpenWeather API'],
+    category: 'Utility',
+    live: 'https://weather-app-jet-sigma-84.vercel.app/',
+    github: 'https://github.com/bibash21-creator/WeatherDash',
   },
   {
-    title: "Hospital Management System",
-    status: "In Progress",
-    image: "/hms.png",
-    tagline: "Care meets code",
-    description: "Enterprise-level patient and staff management system handling appointment scheduling, patient records, and staff coordination. Designed for healthcare providers to streamline administrative workflows.",
-    tech: ["React", "CSS3", "JavaScript"],
-    category: "Full Stack",
-    live: "https://hospital-management-system-theta-jade.vercel.app/",
-    github: "",
-  },
-  {
-    title: "Ticket Application",
-    status: "In Progress",
-    image: "/tms.png",
-    tagline: "Support ticket management made simple",
-    description: "Robust ticketing system for customer support teams with status tracking, priority queuing, and response time metrics. Improves support response efficiency by centralizing all customer issues.",
-    tech: ["Tailwind CSS", "Next.js"],
-    category: "Full Stack",
-    live: "",
-    github: "https://github.com/bibash21-creator/Ticketing_App",
-  },
-  {
-    title: "BIT Result Checker Application",
-    status: "Completed",
-    image: "/brc.png",
-    tagline: "Track your exam progress",
-    description: "ML-powered result checking application using Streamlit. Analyzes exam performance data with pandas and implements predictive analytics for grade tracking.",
-    tech: ["Streamlit", "Pandas", "Machine Learning"],
-    category: "Data Science",
-    live: "https://bitresult079.streamlit.app/",
-    github: "https://github.com/bibash21-creator/Result_Checker",
-  },
-  {
-    title: "Modern Calculator App",
-    status: "Completed",
-    image: "/calculator.png",
-    tagline: "Precision meets simplicity",
-    description: "Sleek, responsive calculator demonstrating modular component architecture and clean code practices. Supports standard arithmetic operations with optimized performance.",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    category: "Web App",
-    live: "https://calculator-seven-sage-81.vercel.app/",
-    github: "#",
-  },
-  {
-    title: "Recipe Page App",
-    status: "Completed",
-    image: "/recipe.png",
-    tagline: "Deliciously organized",
-    description: "Recipe browsing interface with advanced filtering, search functionality, and responsive grid layout. Demonstrates UI/UX best practices for content-heavy applications.",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    category: "Web Design",
-    live: "https://recipe-page-rho-gold.vercel.app/",
-    github: "#",
-  },
-  {
-    title: "School Management System",
-    status: "In Progress",
-    image: "/sms.png",
-    tagline: "Structure for learning",
+    title: 'Notes Application',
+    status: 'In Progress',
+    image: '/notes.png',
+    tagline: 'Organize thoughts, capture ideas, and keep learning alive.',
     description:
-      "Comprehensive school management platform with student and teacher portals, real-time analytics, attendance tracking, and grades management. Streamlines educational administration.",
-    tech: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    category: "Full Stack",
-    live: "https://school-management-system-ten-pi.vercel.app/",
-    github: "#",
+      'Full-stack notes app with secure user authentication, cloud-based storage via MongoDB Atlas, and intuitive categorization. Implements JWT authentication and follows modern API standards for 100% data persistence.',
+    tech: [
+      'React.js',
+      'Node.js',
+      'Express.js',
+      'MongoDB Atlas',
+      'Tailwind CSS',
+    ],
+    category: 'Productivity',
+    live: '',
+    github: 'https://github.com/bibash21-creator/notes_app',
+  },
+  {
+    title: 'Hospital Management System',
+    status: 'In Progress',
+    image: '/hms.png',
+    tagline: 'Care meets code',
+    description:
+      'Enterprise-level patient and staff management system handling appointment scheduling, patient records, and staff coordination. Designed for healthcare providers to streamline administrative workflows.',
+    tech: ['React', 'CSS3', 'JavaScript'],
+    category: 'Full Stack',
+    live: 'https://hospital-management-system-theta-jade.vercel.app/',
+    github: '',
+  },
+  {
+    title: 'Ticket Application',
+    status: 'In Progress',
+    image: '/tms.png',
+    tagline: 'Support ticket management made simple',
+    description:
+      'Robust ticketing system for customer support teams with status tracking, priority queuing, and response time metrics. Improves support response efficiency by centralizing all customer issues.',
+    tech: ['Tailwind CSS', 'Next.js'],
+    category: 'Full Stack',
+    live: '',
+    github: 'https://github.com/bibash21-creator/Ticketing_App',
+  },
+  {
+    title: 'BIT Result Checker Application',
+    status: 'Completed',
+    image: '/brc.png',
+    tagline: 'Track your exam progress',
+    description:
+      'ML-powered result checking application using Streamlit. Analyzes exam performance data with pandas and implements predictive analytics for grade tracking.',
+    tech: ['Streamlit', 'Pandas', 'Machine Learning'],
+    category: 'Data Science',
+    live: 'https://bitresult079.streamlit.app/',
+    github: 'https://github.com/bibash21-creator/Result_Checker',
+  },
+  {
+    title: 'Modern Calculator App',
+    status: 'Completed',
+    image: '/calculator.png',
+    tagline: 'Precision meets simplicity',
+    description:
+      'Sleek, responsive calculator demonstrating modular component architecture and clean code practices. Supports standard arithmetic operations with optimized performance.',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
+    category: 'Web App',
+    live: 'https://calculator-seven-sage-81.vercel.app/',
+    github: '#',
+  },
+  {
+    title: 'Recipe Page App',
+    status: 'Completed',
+    image: '/recipe.png',
+    tagline: 'Deliciously organized',
+    description:
+      'Recipe browsing interface with advanced filtering, search functionality, and responsive grid layout. Demonstrates UI/UX best practices for content-heavy applications.',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
+    category: 'Web Design',
+    live: 'https://recipe-page-rho-gold.vercel.app/',
+    github: '#',
+  },
+  {
+    title: 'School Management System',
+    status: 'In Progress',
+    image: '/sms.png',
+    tagline: 'Structure for learning',
+    description:
+      'Comprehensive school management platform with student and teacher portals, real-time analytics, attendance tracking, and grades management. Streamlines educational administration.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'Prisma'],
+    category: 'Full Stack',
+    live: 'https://school-management-system-ten-pi.vercel.app/',
+    github: '#',
   },
 ];
 
@@ -153,9 +177,13 @@ const cardVariants = {
 /* Smart deployment badge (Launched / Coming Soon) */
 function DeploymentBadge({ live }: { live?: string }) {
   const isLive = !!live?.trim();
-  const label = isLive ? "Launched" : "Coming Soon";
-  const bg = isLive ? "bg-green-600/85" : "bg-red-600/85";
-  return <span className={`px-3 py-1 text-xs rounded-full ${bg} text-white`}>{label}</span>;
+  const label = isLive ? 'Launched' : 'Coming Soon';
+  const bg = isLive ? 'bg-green-600/85' : 'bg-red-600/85';
+  return (
+    <span className={`px-3 py-1 text-xs rounded-full ${bg} text-white`}>
+      {label}
+    </span>
+  );
 }
 
 /* Glass arrow button for carousel */
@@ -163,16 +191,16 @@ function CarouselArrow({
   side,
   onClick,
 }: {
-  side: "left" | "right";
+  side: 'left' | 'right';
   onClick: () => void;
 }) {
-  const Icon = side === "left" ? ChevronLeft : ChevronRight;
-  const positionClass = side === "left" ? "left-0" : "right-0";
+  const Icon = side === 'left' ? ChevronLeft : ChevronRight;
+  const positionClass = side === 'left' ? 'left-0' : 'right-0';
 
   return (
     <button
       onClick={onClick}
-      aria-label={side === "left" ? "Previous project" : "Next project"}
+      aria-label={side === 'left' ? 'Previous project' : 'Next project'}
       className={`absolute ${positionClass} top-1/2 -translate-y-1/2 p-3 rounded-full
                   bg-white/70 dark:bg-gray-800/70 backdrop-blur-md
                   border border-gray-200 dark:border-gray-700
@@ -201,7 +229,7 @@ function EmptyState() {
 /* Project Card */
 function ProjectCard({ p }: { p: Project }) {
   const hasLive = !!p.live?.trim();
-  const hasValidGit = !!(p.github?.trim() && p.github !== "#");
+  const hasValidGit = !!(p.github?.trim() && p.github !== '#');
 
   return (
     <motion.article
@@ -234,15 +262,21 @@ function ProjectCard({ p }: { p: Project }) {
       {/* Content */}
       <div className="p-6 space-y-3">
         <header className="space-y-1">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{p.title}</h3>
-          <p className="text-sm italic text-gray-600 dark:text-gray-400">{p.tagline}</p>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            {p.title}
+          </h3>
+          <p className="text-sm italic text-gray-600 dark:text-gray-400">
+            {p.tagline}
+          </p>
         </header>
 
-        <p className="text-sm line-clamp-2 text-gray-700 dark:text-gray-300">{p.description}</p>
+        <p className="text-sm line-clamp-2 text-gray-700 dark:text-gray-300">
+          {p.description}
+        </p>
 
         {/* Tech stack */}
         <ul className="flex flex-wrap gap-2" aria-label="Technology stack">
-          {p.tech.map((t) => (
+          {p.tech.map(t => (
             <motion.li
               key={t}
               whileHover={{ scale: 1.05 }}
@@ -287,23 +321,23 @@ function ProjectCard({ p }: { p: Project }) {
 
 /* Page: filters, view controls, grid/carousel */
 export default function ProjectPage() {
-  const [filter, setFilter] = useState<Filter>("All Projects");
-  const [view, setView] = useState<"grid" | "carousel">("grid");
+  const [filter, setFilter] = useState<Filter>('All Projects');
+  const [view, setView] = useState<'grid' | 'carousel'>('grid');
   const [index, setIndex] = useState(0);
   const intervalRef = useRef<number | null>(null);
 
   /* Derived list */
   const filtered = useMemo(() => {
     switch (filter) {
-      case "All Projects":
+      case 'All Projects':
         return projects;
-      case "Completed":
-      case "In Progress":
-        return projects.filter((p) => p.status === filter);
-      case "Launched":
-        return projects.filter((p) => p.live?.trim());
-      case "Coming Soon":
-        return projects.filter((p) => !p.live?.trim());
+      case 'Completed':
+      case 'In Progress':
+        return projects.filter(p => p.status === filter);
+      case 'Launched':
+        return projects.filter(p => p.live?.trim());
+      case 'Coming Soon':
+        return projects.filter(p => !p.live?.trim());
       default:
         return projects;
     }
@@ -311,7 +345,9 @@ export default function ProjectPage() {
 
   /* Carousel rotation */
   const rotate = (d = 1) => {
-    setIndex((i) => (filtered.length ? (i + d + filtered.length) % filtered.length : 0));
+    setIndex(i =>
+      filtered.length ? (i + d + filtered.length) % filtered.length : 0
+    );
   };
 
   /* Reset index when filter changes */
@@ -321,7 +357,7 @@ export default function ProjectPage() {
 
   /* Auto-rotate carousel */
   useEffect(() => {
-    if (view === "carousel" && filtered.length > 1) {
+    if (view === 'carousel' && filtered.length > 1) {
       intervalRef.current = window.setInterval(() => rotate(1), 5000);
       return () => {
         if (intervalRef.current) clearInterval(intervalRef.current);
@@ -342,10 +378,10 @@ export default function ProjectPage() {
         Portfolio Showcase
       </motion.h1>
 
-     {/* Responsive Filter Bar — Grid Based (No Scroll, No Overflow) */}
-<div className="flex justify-center mb-10 w-full">
-  <div
-    className="
+      {/* Responsive Filter Bar — Grid Based (No Scroll, No Overflow) */}
+      <div className="flex justify-center mb-10 w-full">
+        <div
+          className="
       grid
       grid-cols-2
       sm:grid-cols-3
@@ -358,16 +394,16 @@ export default function ProjectPage() {
       w-full
       max-w-4xl
     "
-  >
-    {FILTERS.map((f) => {
-      const active = filter === f;
-      return (
-        <motion.button
-          key={f}
-          onClick={() => setFilter(f)}
-          aria-pressed={active}
-          whileTap={{ scale: 0.95 }}
-          className={`
+        >
+          {FILTERS.map(f => {
+            const active = filter === f;
+            return (
+              <motion.button
+                key={f}
+                onClick={() => setFilter(f)}
+                aria-pressed={active}
+                whileTap={{ scale: 0.95 }}
+                className={`
             w-full
             px-3 py-2
             text-xs sm:text-sm
@@ -376,43 +412,44 @@ export default function ProjectPage() {
             transition-all
             ${
               active
-                ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
-                : "bg-white/70 dark:bg-gray-900/40 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"
+                ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md'
+                : 'bg-white/70 dark:bg-gray-900/40 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
             }
           `}
-        >
-          {f}
-        </motion.button>
-      );
-    })}
-  </div>
-</div>
-
-
-        {/* View toggle (Grid / Carousel) */}
-        <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
-          {(["grid", "carousel"] as const).map((v) => {
-            const active = view === v;
-            return (
-              <motion.button
-                key={v}
-                onClick={() => setView(v)}
-                aria-pressed={active}
-                whileTap={{ scale: 0.95 }}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors
-                            ${active
-                              ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md"
-                              : "text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300"}`}
               >
-                {v === "grid" ? "Grid" : "Carousel"}
+                {f}
               </motion.button>
             );
           })}
         </div>
+      </div>
+
+      {/* View toggle (Grid / Carousel) */}
+      <div className="inline-flex rounded-full bg-gray-100 dark:bg-gray-800 p-1 shadow-inner">
+        {(['grid', 'carousel'] as const).map(v => {
+          const active = view === v;
+          return (
+            <motion.button
+              key={v}
+              onClick={() => setView(v)}
+              aria-pressed={active}
+              whileTap={{ scale: 0.95 }}
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-colors
+                            ${
+                              active
+                                ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md'
+                                : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
+                            }`}
+            >
+              {v === 'grid' ? 'Grid' : 'Carousel'}
+            </motion.button>
+          );
+        })}
+      </div>
 
       {/* Content */}
       <AnimatePresence mode="wait">
-        {view === "grid" ? (
+        {view === 'grid' ? (
           <motion.div
             variants={listVariants}
             initial="initial"
@@ -420,7 +457,7 @@ export default function ProjectPage() {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filtered.length ? (
-              filtered.map((p) => <ProjectCard key={p.title} p={p} />)
+              filtered.map(p => <ProjectCard key={p.title} p={p} />)
             ) : (
               <div className="col-span-full">
                 <EmptyState />

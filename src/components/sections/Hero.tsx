@@ -1,16 +1,15 @@
 // components/Hero.tsx
 import Image from 'next/image';
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import { FiFolder, FiDownload, FiMail } from 'react-icons/fi';
-import Link from "next/link";
-import { GiSkills } from "react-icons/gi";
+import Link from 'next/link';
+import { GiSkills } from 'react-icons/gi';
 import { MdWorkOutline } from 'react-icons/md';
 
 export default function Hero() {
   return (
     <>
       <section className="container mb-20 md:px-20 flex flex-col-reverse md:flex-row animate-in fade-out duration-1000">
-        
         {/* Left Section */}
         <div className="md:w-1/2 text-center md:text-left py-10">
           <div className="space-y-4">
@@ -29,11 +28,12 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 font-semibold max-w-xl mx-auto md:mx-0">
-              I’m a passionate developer who loves building interactive, user-centric products. 
-              I focus on crafting seamless experiences using modern tools and emotionally grounded design.
+              I’m a passionate developer who loves building interactive,
+              user-centric products. I focus on crafting seamless experiences
+              using modern tools and emotionally grounded design.
             </p>
           </div>
-          
+
           {/* Buttons */}
           <div className="flex flex-col gap-y-5 md:flex-row md:gap-x-5 mb-7 justify-center md:justify-start mt-6">
             <Button variant="outline">
@@ -90,7 +90,6 @@ export default function Hero() {
             <Image
               src="/bibash.png"
               alt="Bibash Poudel"
-              
               priority
               width={500}
               height={800}

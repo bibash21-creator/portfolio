@@ -18,40 +18,43 @@ const experiences: Experience[] = [
     title: 'Bachelor of Information Technology',
     organization: 'Purbanchal University',
     period: '2021 - 2025',
-    description: 'Pursuing degree with focus on web development and emerging technologies.',
+    description:
+      'Pursuing degree with focus on web development and emerging technologies.',
     achievements: [
       'Strong academic performance in programming courses',
       'Active participant in tech workshops and seminars',
-      'Developed multiple full-stack projects as part of coursework'
+      'Developed multiple full-stack projects as part of coursework',
     ],
-    icon: '🎓'
+    icon: '🎓',
   },
   {
     type: 'work',
     title: 'Full Stack Developer',
     organization: 'Self-Employed / Freelance',
     period: '2022 - Present',
-    description: 'Building production-ready web applications with focus on user experience and clean code architecture.',
+    description:
+      'Building production-ready web applications with focus on user experience and clean code architecture.',
     achievements: [
       '9+ projects delivered to completion',
       'Specialization in Next.js, React, and Node.js',
-      'Strong emphasis on responsive design and performance optimization'
+      'Strong emphasis on responsive design and performance optimization',
     ],
-    icon: '💻'
+    icon: '💻',
   },
   {
     type: 'work',
     title: 'Junior Developer (Contract)',
     organization: 'Multiple Organizations',
     period: '2023 - 2024',
-    description: 'Collaborated on client projects, implementing features and fixing bugs across the stack.',
+    description:
+      'Collaborated on client projects, implementing features and fixing bugs across the stack.',
     achievements: [
       'Built responsive UI components',
       'Implemented RESTful APIs',
-      'Improved application performance by 30%'
+      'Improved application performance by 30%',
     ],
-    icon: '🚀'
-  }
+    icon: '🚀',
+  },
 ];
 
 export default function Experience() {
@@ -122,7 +125,10 @@ export default function Experience() {
                 {experience.achievements && (
                   <ul className="space-y-2">
                     {experience.achievements.map((achievement, i) => (
-                      <li key={i} className="flex gap-2 text-sm text-gray-700 dark:text-gray-300">
+                      <li
+                        key={i}
+                        className="flex gap-2 text-sm text-gray-700 dark:text-gray-300"
+                      >
                         <span className="text-purple-500 font-bold">✓</span>
                         {achievement}
                       </li>

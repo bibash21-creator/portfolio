@@ -1,10 +1,10 @@
 // components/OrbitingSkills.tsx
-'use client'
+'use client';
 
-import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars } from '@react-three/drei'
-import { useRef, memo } from 'react'
-import * as THREE from 'three'
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Stars } from '@react-three/drei';
+import { useRef, memo } from 'react';
+import * as THREE from 'three';
 
 export default function OrbitingSkillsScene() {
   return (
@@ -20,7 +20,7 @@ export default function OrbitingSkillsScene() {
         <OrbitingSkills />
       </Canvas>
     </div>
-  )
+  );
 }
 
 // -------------------------------
@@ -28,12 +28,12 @@ export default function OrbitingSkillsScene() {
 // -------------------------------
 
 const OrbitingSkills = memo(function OrbitingSkills() {
-  const groupRef = useRef<THREE.Group>(null!)
+  const groupRef = useRef<THREE.Group>(null!);
 
   // rotating animation
   useFrame(() => {
-    groupRef.current.rotation.y += 0.005
-  })
+    groupRef.current.rotation.y += 0.005;
+  });
 
   // typed positions to avoid TypeScript errors
   const positions: [number, number, number][] = [
@@ -43,7 +43,7 @@ const OrbitingSkills = memo(function OrbitingSkills() {
     [0, -3, 0],
     [2.1, 2.1, 0],
     [-2.1, -2.1, 0],
-  ]
+  ];
 
   return (
     <group ref={groupRef}>
@@ -61,5 +61,5 @@ const OrbitingSkills = memo(function OrbitingSkills() {
         </mesh>
       ))}
     </group>
-  )
-})
+  );
+});

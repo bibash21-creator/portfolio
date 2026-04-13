@@ -1,15 +1,14 @@
-import About from "./about/page";
-import Contact from "./contact/page";
-import Hero from "./hero/page"
-import Project from "./projects/page";
-import Skills from "./skills/page";
-import Experience from "./experience/page";
-import Testimonials from "./testimonials/page";
+import About from '@/components/sections/About';
+import Contact from '@/components/sections/Contact';
+import Hero from '@/components/sections/Hero';
+import Project from '@/components/sections/Project';
+import Skills from '@/components/sections/Skills';
+import Experience from '@/components/sections/Experience';
+import Testimonials from '@/components/sections/Testimonials';
 
 export default function Home() {
   return (
     <div>
-
       <Hero />
 
       <About />
@@ -23,10 +22,6 @@ export default function Home() {
       <Testimonials />
 
       <Contact />
-
-      
-     
-      
-      </div>
+    </div>
   );
 }

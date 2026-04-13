@@ -28,29 +28,38 @@ export default function GitHubStats() {
     const fetchGitHubStats = async () => {
       try {
         const username = 'bibash21-creator';
-        
+
         // Fetch user data
-        const userResponse = await fetch(`https://api.github.com/users/${username}`, {
-          headers: {
-            'Accept': 'application/vnd.github.v3+json',
-          },
-        });
+        const userResponse = await fetch(
+          `https://api.github.com/users/${username}`,
+          {
+            headers: {
+              Accept: 'application/vnd.github.v3+json',
+            },
+          }
+        );
 
         if (!userResponse.ok) throw new Error('Failed to fetch GitHub data');
 
         const userData: GitHubUser = await userResponse.json();
 
         // Fetch repositories to calculate total stars
-        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
-          headers: {
-            'Accept': 'application/vnd.github.v3+json',
-          },
-        });
+        const reposResponse = await fetch(
+          `https://api.github.com/users/${username}/repos?per_page=100`,
+          {
+            headers: {
+              Accept: 'application/vnd.github.v3+json',
+            },
+          }
+        );
 
         if (!reposResponse.ok) throw new Error('Failed to fetch repos');
 
         const repos = await reposResponse.json();
-        const totalStars = repos.reduce((sum: number, repo: any) => sum + (repo.stargazers_count || 0), 0);
+        const totalStars = repos.reduce(
+          (sum: number, repo: any) => sum + (repo.stargazers_count || 0),
+          0
+        );
 
         setStats({
           totalRepos: userData.public_repos,
@@ -78,7 +87,9 @@ export default function GitHubStats() {
   if (loading) {
     return (
       <div className="p-6 rounded-2xl bg-white/70 dark:bg-gray-900/40 border border-gray-200 dark:border-gray-700">
-        <p className="text-center text-gray-600 dark:text-gray-400">Loading GitHub stats...</p>
+        <p className="text-center text-gray-600 dark:text-gray-400">
+          Loading GitHub stats...
+        </p>
       </div>
     );
   }
@@ -121,8 +132,12 @@ export default function GitHubStats() {
           <Github className="w-6 h-6 text-white dark:text-gray-900" />
         </div>
         <div>
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100">GitHub Stats</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">Open source contributions</p>
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+            GitHub Stats
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Open source contributions
+          </p>
         </div>
       </div>
 
@@ -140,7 +155,9 @@ export default function GitHubStats() {
               <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
                 {stat.value}
               </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">{stat.label}</p>
+              <p className="text-xs text-gray-600 dark:text-gray-400">
+                {stat.label}
+              </p>
             </motion.div>
           );
         })}

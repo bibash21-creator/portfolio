@@ -61,4 +61,4 @@ I’m always up for a chat about web dev, AI, or cool projects.
 - Find me on [LinkedIn](https://www.linkedin.com/in/bibash-poudel)
 - Check out my other work here on [GitHub](https://github.com/bibash21-creator)
 
-*If you find anything helpful here, feel free to leave a ⭐. It means a lot!*
+_If you find anything helpful here, feel free to leave a ⭐. It means a lot!_

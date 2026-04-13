@@ -1,59 +1,59 @@
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion';
 
 const skillTimeline = [
   {
-    year: "2021",
-    category: "Frontend",
+    year: '2021',
+    category: 'Frontend',
     skills: [
-      { name: "HTML", detail: "Semantic, accessible markup" },
-      { name: "CSS", detail: "Responsive, modern layouts" },
-      { name: "JavaScript", detail: "ES6+, modular patterns" },
-      { name: "React", detail: "Hooks, context, reusable components" },
-      { name: "Next.js", detail: "SSR, ISR, API routes" },
-      { name: "Tailwind CSS", detail: "Utility-first, responsive design" },
+      { name: 'HTML', detail: 'Semantic, accessible markup' },
+      { name: 'CSS', detail: 'Responsive, modern layouts' },
+      { name: 'JavaScript', detail: 'ES6+, modular patterns' },
+      { name: 'React', detail: 'Hooks, context, reusable components' },
+      { name: 'Next.js', detail: 'SSR, ISR, API routes' },
+      { name: 'Tailwind CSS', detail: 'Utility-first, responsive design' },
     ],
   },
   {
-    year: "2022",
-    category: "Backend",
+    year: '2022',
+    category: 'Backend',
     skills: [
-      { name: "Node.js", detail: "Event-driven architecture" },
-      { name: "Express", detail: "REST APIs, middleware" },
-      { name: "MongoDB", detail: "NoSQL, Atlas cloud" },
-      { name: "SQL", detail: "Relational DB design" },
+      { name: 'Node.js', detail: 'Event-driven architecture' },
+      { name: 'Express', detail: 'REST APIs, middleware' },
+      { name: 'MongoDB', detail: 'NoSQL, Atlas cloud' },
+      { name: 'SQL', detail: 'Relational DB design' },
     ],
   },
   {
-    year: "2023",
-    category: "AI / ML",
+    year: '2023',
+    category: 'AI / ML',
     skills: [
-      { name: "Python", detail: "Data pipelines & scripting" },
-      { name: "TensorFlow", detail: "Deep learning models" },
-      { name: "PyTorch", detail: "Flexible ML experimentation" },
-      { name: "Scikit-learn", detail: "Classical ML algorithms" },
+      { name: 'Python', detail: 'Data pipelines & scripting' },
+      { name: 'TensorFlow', detail: 'Deep learning models' },
+      { name: 'PyTorch', detail: 'Flexible ML experimentation' },
+      { name: 'Scikit-learn', detail: 'Classical ML algorithms' },
     ],
   },
   {
-    year: "2024",
-    category: "Design & Animation",
+    year: '2024',
+    category: 'Design & Animation',
     skills: [
-      { name: "Framer Motion", detail: "Micro-interactions & motion design" },
-      { name: "shadcn/ui", detail: "Composable UI primitives" },
-      { name: "Lucide React", detail: "Iconography system" },
+      { name: 'Framer Motion', detail: 'Micro-interactions & motion design' },
+      { name: 'shadcn/ui', detail: 'Composable UI primitives' },
+      { name: 'Lucide React', detail: 'Iconography system' },
     ],
   },
   {
-    year: "2025",
-    category: "Creative Coding",
+    year: '2025',
+    category: 'Creative Coding',
     skills: [
-      { name: "React Three Fiber", detail: "3D experiences in React" },
-      { name: "Storytelling", detail: "Narrative-driven UI flows" },
-      { name: "Modular Architecture", detail: "Scalable, reusable systems" },
+      { name: 'React Three Fiber', detail: '3D experiences in React' },
+      { name: 'Storytelling', detail: 'Narrative-driven UI flows' },
+      { name: 'Modular Architecture', detail: 'Scalable, reusable systems' },
     ],
   },
-]
+];
 
 function SkillChip({ skill }: { skill: { name: string; detail: string } }) {
   return (
@@ -82,7 +82,7 @@ function SkillChip({ skill }: { skill: { name: string; detail: string } }) {
         {skill.detail}
       </motion.div>
     </motion.div>
-  )
+  );
 }
 
 export default function SkillsTimeline() {
@@ -101,9 +101,11 @@ export default function SkillsTimeline() {
 
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-1/2 top-0 h-full w-1 
+        <div
+          className="absolute left-1/2 top-0 h-full w-1 
                         bg-gradient-to-b from-purple-500 to-pink-500 
-                        transform -translate-x-1/2" />
+                        transform -translate-x-1/2"
+        />
 
         <div className="flex flex-col gap-24">
           {skillTimeline.map((item, idx) => (
@@ -114,13 +116,15 @@ export default function SkillsTimeline() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className={`relative flex flex-col md:flex-row items-center ${
-                idx % 2 === 0 ? "md:flex-row-reverse" : ""
+                idx % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
             >
               {/* Marker */}
-              <div className="absolute left-1/2 w-6 h-6 rounded-full 
+              <div
+                className="absolute left-1/2 w-6 h-6 rounded-full 
                               bg-purple-500 border-4 border-pink-500 
-                              transform -translate-x-1/2 shadow-lg" />
+                              transform -translate-x-1/2 shadow-lg"
+              />
 
               {/* Panel */}
               <div
@@ -144,5 +148,5 @@ export default function SkillsTimeline() {
         </div>
       </div>
     </section>
-  )
+  );
 }
