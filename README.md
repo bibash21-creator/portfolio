@@ -1,50 +1,118 @@
-🌐 Modern Developer Portfolio – Built with Next.js & React
+<div align="center">
+  <h1>🚀 Bibash Poudel | Full Stack Developer Portfolio</h1>
+  <p>
+    <strong>A modern, dynamic, and responsive developer portfolio built with Next.js 15, React 19, and Tailwind CSS.</strong>
+  </p>
+  <p>
+    <a href="https://github.com/bibash21-creator/portfolio/commits/main">
+      <img src="https://img.shields.io/github/last-commit/bibash21-creator/portfolio?style=for-the-badge&color=blue" alt="Last Commit">
+    </a>
+    <a href="https://github.com/bibash21-creator/portfolio/issues">
+      <img src="https://img.shields.io/github/issues/bibash21-creator/portfolio?style=for-the-badge&color=orange" alt="Issues">
+    </a>
+    <a href="#tech-stack">
+      <img src="https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+    </a>
+    <a href="#tech-stack">
+      <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+    </a>
+  </p>
+</div>
 
-This repository contains a modern, responsive portfolio website built using Next.js and React. Designed as a personal showcase platform, it highlights the creator’s projects, professional philosophy, and journey as a developer. The project is bootstrapped with Create Next App and deployed seamlessly on Vercel using a CI-enabled production setup.
+<br />
 
-With a growing commit history (10 commits so far), the portfolio continues to evolve—recent updates include the addition of new projects and UI refinements.
+Welcome to my personal digital playground! This repository houses the source code for my personal developer portfolio, designed to showcase my projects, professional philosophy, technical skills, and journey as a full-stack developer.
 
-🚀 Features
+## ✨ Features
 
-Personal Portfolio Website: A digital presence to showcase skills, projects, and accomplishments.
+- **Personal Brand & Showcase**: A beautifully crafted digital presence focusing on UI/UX and rich storytelling.
+- **Dark/Light Mode**: Seamlessly toggle between dark and light themes using `next-themes`.
+- **Responsive & Accessible**: Fully responsive layout optimized across devices (mobile to 4K displays).
+- **Smooth Animations**: Uses Framer Motion and Three.js for micro-interactions and scroll animations.
+- **Modern Workflow**: Bootstrapped using `create-next-app` with active CI/CD deployment on Vercel.
+- **Contact Integration**: Dynamic contact form (powered by Resend API).
+- **SEO Optimized**: Advanced metadata, sitemap generation, and strict Open Graph integration.
 
-Responsive Design: Fully optimized for mobile, tablet, and desktop devices.
+---
 
-Project Showcase: Displays professional work, developer journey, and coding philosophy.
+## 🛠️ Tech Stack
 
-Modern Development Workflow: Supports fast development with auto-reloading and efficient bundling.
+**Frontend Framework:** Next.js (App Router), React 19  
+**Styling Ecosystem:** Tailwind CSS (v4), Framer Motion  
+**Languages:** TypeScript, plain CSS / JavaScript  
+**3D & Interactivity:** `@react-three/fiber`, `@react-three/drei`  
+**Forms & Validation:** `react-hook-form`, `zod`  
+**Email Handling:** `resend`  
+**Deployment:** Vercel  
 
-Optimized Fonts: Uses Next.js built-in font optimization for improved performance.
+---
 
-Production Deployment: Hosted on Vercel with continuous deployment for smooth updates.
+## 📅 The 30-Day Refactor Challenge
 
-🛠️ Tech Stack
+Currently, this repository is undergoing an intensive 30-day "Commit Challenge" to elevate the portfolio to production standards. 
+You can track my daily progress across these four key phases:
 
-Frontend Framework: Next.js, React
-Language: TypeScript (87.2%)
-Styling: Tailwind CSS + CSS (11.3%)
-Other: JavaScript (1.5%)
-Build Tool: Create Next App
-Deployment: Vercel
-Package Manager: npm / yarn / pnpm / bun
+1. **Phase 1:** Visual Polish & UI/UX Design Refinements
+2. **Phase 2:** Advanced Interactivity (Framer Motion, Custom Cursors, 3D Elements)
+3. **Phase 3:** Backend APIs & Data Integrations (Contact Forms via Resend)
+4. **Phase 4:** SEO Optimization, Accessibility (a11y), and Site Performance Evaluation
 
-📦 Getting Started
+<details>
+<summary>Click here to view the daily challenge roadmap summary</summary>
 
-Clone the repository and install dependencies:
+- Layout restructuring (Hero, Navbar, global fonts).
+- Page route transitions and scrolling optimizations.
+- Integration of a Zod-validated server-side contact form.
+- Lighthouse audits for 100/100 scores in accessibility and SEO.
+</details>
 
-git clone <repo-url>
-cd <project-folder>
+---
+
+## 📦 Getting Started
+
+Ready to explore the code? Follow these simple steps:
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/bibash21-creator/portfolio.git
+cd portfolio/portfolio
+```
+
+### 2. Install Dependencies
+```bash
 npm install
-# or yarn / pnpm / bun
+# or yarn install / pnpm install / bun install
+```
 
+### 3. Setup Environment Variables
+Create a local `.env.local` file at the root of the project to add your API credentials:
+```env
+RESEND_API_KEY=your_resend_api_key_here
+```
 
-Run the development server:
-
+### 4. Run the Development Server
+```bash
 npm run dev
+```
 
+Open [http://localhost:3000](http://localhost:3000) on your local browser to view the application.
 
-Open http://localhost:3000 to view the project.
+---
 
-📤 Deployment
+## 📤 Deployment
 
-The project is deployed on Vercel, supporting automatic builds and instant updates on every push to the main branch.
+This project deploys automatically to [Vercel](https://vercel.com/) via the GitHub integration. Commits to the `main` branch trigger a production build. Next.js cache capabilities are utilized to maintain super-fast response times.
+
+---
+
+## 🤝 Let's Connect
+
+- [LinkedIn Profile](https://www.linkedin.com/in/bibash-poudel) *(Replace with actual link if preferred)*
+- [GitHub Profile](https://github.com/bibash21-creator)
+
+> *"Passionate about building fast, accessible, and inclusive digital experiences."* — Bibash Poudel
+
+<div align="center">
+  <br />
+  <p>If you like this project, feel free to ⭐ star the repository!</p>
+</div>
