@@ -60,8 +60,9 @@ export default function RootLayout({
       <body className={font.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
-          {children}
-
+          <main className="min-h-screen">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

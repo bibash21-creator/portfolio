@@ -59,13 +59,15 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   return (
-    <section className="max-w-5xl mx-auto px-6 py-24">
+    <section id="experience" className="max-w-5xl mx-auto px-6 py-24">
       {/* Heading */}
       <motion.h1
         className="text-5xl font-extrabold text-center mb-4 text-gray-900 dark:text-gray-100"
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}
+        viewport={{ once: false }}
       >
         Experience & Education
       </motion.h1>
@@ -73,8 +75,10 @@ export default function Experience() {
       <motion.p
         className="text-center text-lg text-gray-600 dark:text-gray-400 mb-16"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
+        viewport={{ once: false }}
       >
         My journey through education and professional growth
       </motion.p>
@@ -87,49 +91,75 @@ export default function Experience() {
           {experiences.map((experience, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.9 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: '-100px' }}
               className={`relative flex flex-col md:flex-row items-center ${
                 idx % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
             >
-              {/* Timeline marker */}
-              <div className="absolute left-1/2 w-12 h-12 rounded-full bg-white dark:bg-black border-4 border-purple-500 transform -translate-x-1/2 flex items-center justify-center text-lg z-10 shadow-lg">
-                {experience.icon}
+              {/* Timeline marker with Pulse Effect */}
+              <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center z-10">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  className="absolute w-16 h-16 rounded-full bg-purple-500/20"
+                />
+                <div className="w-12 h-12 rounded-full bg-white dark:bg-gray-950 border-4 border-purple-500 flex items-center justify-center text-lg shadow-xl relative z-10">
+                  {experience.icon}
+                </div>
               </div>
 
-              {/* Content card */}
-              <div className="md:w-1/2 p-6 rounded-2xl bg-white dark:bg-gray-900/60 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="text-2xl">{experience.icon}</div>
+              {/* Content card with Deep Glassmorphism */}
+              <div
+                className="md:w-1/2 p-8 rounded-2xl 
+                           bg-white/80 dark:bg-gray-900/40 
+                           backdrop-blur-xl border border-white/20 dark:border-gray-800 
+                           shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] 
+                           hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] 
+                           hover:border-purple-500/30 transition-all duration-500 group"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-3xl group-hover:scale-110 transition-transform duration-300">
+                    {experience.icon}
+                  </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                       {experience.title}
                     </h3>
-                    <p className="text-sm text-purple-600 dark:text-purple-400 font-semibold">
+                    <p className="text-md text-purple-600 dark:text-purple-400 font-bold tracking-tight">
                       {experience.organization}
                     </p>
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 font-medium">
+                <div className="inline-block px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-xs font-bold text-purple-700 dark:text-purple-300 mb-4">
                   {experience.period}
-                </p>
+                </div>
 
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
                   {experience.description}
                 </p>
 
                 {experience.achievements && (
-                  <ul className="space-y-2">
+                  <ul className="space-y-3">
                     {experience.achievements.map((achievement, i) => (
                       <li
                         key={i}
-                        className="flex gap-2 text-sm text-gray-700 dark:text-gray-300"
+                        className="flex gap-3 text-sm text-gray-700 dark:text-gray-300 items-start"
                       >
-                        <span className="text-purple-500 font-bold">✓</span>
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-purple-500/10 flex items-center justify-center text-[10px] text-purple-500 font-bold">
+                          ✓
+                        </span>
                         {achievement}
                       </li>
                     ))}

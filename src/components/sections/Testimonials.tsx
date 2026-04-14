@@ -101,43 +101,60 @@ export default function Testimonials() {
 
       {/* Testimonials Grid */}
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        exit="hidden"
+        viewport={{ once: false, margin: '-50px' }}
       >
         {testimonials.map((testimonial, idx) => (
           <motion.div
             key={idx}
             variants={cardVariants}
-            whileHover={{ y: -4 }}
-            className="p-6 rounded-2xl bg-white/70 dark:bg-gray-900/40 backdrop-blur-lg border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl transition-all"
+            whileHover={{ y: -8, scale: 1.02 }}
+            className="p-8 rounded-3xl bg-white/80 dark:bg-gray-900/40 backdrop-blur-xl border border-white/20 dark:border-gray-800 shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 flex flex-col justify-between group"
           >
-            {/* Rating */}
-            <div className="flex gap-1 mb-4">
-              {Array.from({ length: testimonial.rating }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-5 h-5 fill-yellow-400 text-yellow-400"
-                />
-              ))}
+            <div>
+              {/* Rating with Glow Effect */}
+              <div className="flex gap-1 mb-6">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      opacity: [0.8, 1, 0.8],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  >
+                    <Star
+                      className="w-5 h-5 fill-yellow-400 text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Testimonial Text */}
+              <p className="text-gray-700 dark:text-gray-300 mb-8 leading-relaxed italic text-lg font-medium">
+                "{testimonial.text}"
+              </p>
             </div>
 
-            {/* Testimonial Text */}
-            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed italic">
-              "{testimonial.text}"
-            </p>
-
-            {/* Author */}
-            <div className="flex items-center gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <div className="text-3xl">{testimonial.image}</div>
+            {/* Author Section */}
+            <div className="flex items-center gap-4 pt-6 border-t border-gray-100 dark:border-gray-800">
+              <div className="text-4xl filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+                {testimonial.image}
+              </div>
               <div>
-                <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                <h3 className="font-bold text-gray-900 dark:text-gray-100 text-lg">
                   {testimonial.name}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  {testimonial.role} at{' '}
-                  <span className="font-medium">{testimonial.company}</span>
+                <p className="text-sm font-medium text-purple-600 dark:text-purple-400">
+                  {testimonial.role} <span className="text-gray-400 dark:text-gray-500 mx-1">@</span> {testimonial.company}
                 </p>
               </div>
             </div>
@@ -150,7 +167,8 @@ export default function Testimonials() {
         className="mt-20 pt-20 border-t border-gray-200 dark:border-gray-700"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        exit={{ opacity: 0 }}
+        viewport={{ once: false }}
       >
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
           My Commitment
@@ -178,8 +196,9 @@ export default function Testimonials() {
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
               transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <div className="text-4xl mb-3">{item.icon}</div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">

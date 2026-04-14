@@ -367,13 +367,15 @@ export default function ProjectPage() {
   }, [view, filtered.length]);
 
   return (
-    <section className="py-20 max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-20 max-w-7xl mx-auto px-6">
       {/* Heading */}
       <motion.h1
         className="text-5xl font-extrabold text-center mb-12 text-gray-900 dark:text-gray-100"
         initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -16 }}
         transition={{ duration: 0.45 }}
+        viewport={{ once: false }}
       >
         Portfolio Showcase
       </motion.h1>
@@ -453,7 +455,9 @@ export default function ProjectPage() {
           <motion.div
             variants={listVariants}
             initial="initial"
-            animate="enter"
+            whileInView="enter"
+            exit="initial"
+            viewport={{ once: false, margin: "-50px" }}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filtered.length ? (

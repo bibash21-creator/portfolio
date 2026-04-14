@@ -87,14 +87,16 @@ function SkillChip({ skill }: { skill: { name: string; detail: string } }) {
 
 export default function SkillsTimeline() {
   return (
-    <section className="relative max-w-5xl mx-auto px-6 py-24">
+    <section id="skills" className="relative max-w-5xl mx-auto px-6 py-24">
       {/* Heading */}
       <motion.h1
         className="text-5xl font-extrabold text-center mb-20 
                    text-gray-900 dark:text-gray-100"
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.6 }}
+        viewport={{ once: false }}
       >
         My Skill Journey
       </motion.h1>
@@ -111,10 +113,11 @@ export default function SkillsTimeline() {
           {skillTimeline.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9, y: 40 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 40 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: "-100px" }}
               className={`relative flex flex-col md:flex-row items-center ${
                 idx % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
@@ -126,16 +129,19 @@ export default function SkillsTimeline() {
                               transform -translate-x-1/2 shadow-lg"
               />
 
-              {/* Panel */}
+              {/* Panel with Enhanced Glassmorphism */}
               <div
-                className="md:w-1/2 p-8 rounded-2xl 
-                           bg-gray-50/90 dark:bg-gray-800/60 
-                           backdrop-blur-lg border border-gray-200 dark:border-gray-700 
-                           shadow-lg hover:shadow-xl 
-                           transition-all duration-300"
+                className="md:w-1/2 p-8 rounded-3xl 
+                           bg-white/80 dark:bg-gray-900/40 
+                           backdrop-blur-xl border border-white/20 dark:border-gray-800 
+                           shadow-2xl hover:shadow-purple-500/10 
+                           hover:border-purple-500/30
+                           transition-all duration-500 group"
               >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-                  {item.year} — {item.category}
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-3">
+                  <span className="text-purple-600 dark:text-purple-400">{item.year}</span>
+                  <span className="w-1 h-1 rounded-full bg-gray-400" />
+                  <span>{item.category}</span>
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {item.skills.map((skill, i) => (
