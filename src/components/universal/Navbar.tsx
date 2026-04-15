@@ -1,4 +1,11 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon, Menu, X } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -39,7 +46,7 @@ export default function Navbar() {
       <motion.div 
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 text-transparent bg-clip-text tracking-tighter"
+        className="text-2xl md:text-3xl font-black bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 text-transparent bg-clip-text tracking-tighter"
       >
         Bibash.dev
       </motion.div>

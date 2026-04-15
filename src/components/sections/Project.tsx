@@ -364,7 +364,7 @@ export default function ProjectPage() {
       };
     }
     return;
-  }, [view, filtered.length]);
+  }, [view, filtered.length, rotate]);
 
   return (
     <section id="projects" className="py-20 max-w-7xl mx-auto px-6">

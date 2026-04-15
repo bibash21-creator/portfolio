@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import GitHubStats from '@/components/GitHubStats';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
 export default function About() {
   const containerVariants = {
@@ -11,9 +11,9 @@ export default function About() {
       opacity: 1,
       transition: { staggerChildren: 0.15 },
     },
-  };
+  } as const;
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };

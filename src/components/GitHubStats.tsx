@@ -121,41 +121,50 @@ export default function GitHubStats() {
 
   return (
     <motion.div
-      className="rounded-2xl overflow-hidden bg-white/70 dark:bg-gray-900/40 backdrop-blur-lg border border-gray-200 dark:border-gray-700 p-8"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+      className="rounded-[2.5rem] overflow-hidden bg-white/40 dark:bg-gray-900/40 backdrop-blur-2xl border border-white/20 dark:border-white/5 p-10 shadow-2xl"
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 30, scale: 0.95 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: false, margin: "-50px" }}
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-full bg-gray-900 dark:bg-white flex items-center justify-center">
-          <Github className="w-6 h-6 text-white dark:text-gray-900" />
-        </div>
+      <div className="flex items-center gap-5 mb-10">
+        <motion.div 
+          className="w-14 h-14 rounded-2xl bg-gray-900 dark:bg-white flex items-center justify-center shadow-xl"
+          whileHover={{ rotate: 360 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Github className="w-8 h-8 text-white dark:text-gray-900" />
+        </motion.div>
         <div>
-          <h3 className="font-semibold text-gray-900 dark:text-gray-100">
-            GitHub Stats
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+            Open Source Pulse
           </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            Open source contributions
+          <p className="text-md text-gray-600 dark:text-gray-400 font-medium">
+            Real-time GitHub activity & contributions
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
         {statCards.map((stat, idx) => {
           const Icon = stat.icon;
           return (
             <motion.div
               key={idx}
-              className="p-4 rounded-lg bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 text-center"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
+              className="p-6 rounded-3xl bg-gray-50/50 dark:bg-gray-800/30 border border-gray-100 dark:border-white/5 text-center group transition-all duration-300 hover:border-purple-500/30"
+              whileHover={{ y: -5, scale: 1.02 }}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.1 }}
             >
-              <Icon className={`w-6 h-6 mx-auto mb-2 ${stat.color}`} />
-              <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-1">
+              <div className="w-12 h-12 rounded-xl bg-white dark:bg-gray-700 shadow-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                <Icon className={`w-6 h-6 ${stat.color}`} />
+              </div>
+              <p className="text-3xl font-black text-gray-900 dark:text-gray-100 mb-1">
                 {stat.value}
               </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400">
+              <p className="text-xs uppercase tracking-widest font-black text-gray-500 dark:text-gray-500">
                 {stat.label}
               </p>
             </motion.div>
@@ -167,11 +176,11 @@ export default function GitHubStats() {
         href="https://github.com/bibash21-creator"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-6 block w-full text-center py-3 rounded-lg bg-gradient-to-r from-gray-900 to-black dark:from-gray-600 dark:to-gray-800 text-white font-semibold hover:shadow-lg transition-all"
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        className="mt-10 block w-full text-center py-5 rounded-2xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-black text-lg hover:shadow-2xl transition-all"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
       >
-        View GitHub Profile
+        Explore Repositories
       </motion.a>
     </motion.div>
   );
