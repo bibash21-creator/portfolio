@@ -9,7 +9,7 @@
  * - Accessible focus rings, aria labels, consistent contrast
  */
 
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -344,11 +344,11 @@ export default function ProjectPage() {
   }, [filter]);
 
   /* Carousel rotation */
-  const rotate = (d = 1) => {
+  const rotate = useCallback((d = 1) => {
     setIndex(i =>
       filtered.length ? (i + d + filtered.length) % filtered.length : 0
     );
-  };
+  }, [filtered.length]);
 
   /* Reset index when filter changes */
   useEffect(() => {

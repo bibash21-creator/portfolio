@@ -57,7 +57,7 @@ export default function GitHubStats() {
 
         const repos = await reposResponse.json();
         const totalStars = repos.reduce(
-          (sum: number, repo: any) => sum + (repo.stargazers_count || 0),
+          (sum: number, repo: { stargazers_count?: number }) => sum + (repo.stargazers_count || 0),
           0
         );
 

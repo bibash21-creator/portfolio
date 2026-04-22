@@ -4,8 +4,6 @@ import { motion, Variants } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { FiFolder, FiDownload, FiMail } from 'react-icons/fi';
 import Link from 'next/link';
-import { GiSkills } from 'react-icons/gi';
-import { MdWorkOutline } from 'react-icons/md';
 import HeroScene from '@/components/ui/HeroScene';
 
 export default function Hero() {
@@ -86,7 +84,7 @@ export default function Hero() {
               className="rounded-full px-8 py-7 text-lg font-bold border-2 border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 transition-all hover:scale-105 active:scale-95"
             >
               <Link href="/contact">
-                Let's Talk <FiMail className="ml-3" />
+                Let&apos;s Talk <FiMail className="ml-3" />
               </Link>
             </Button>
             

@@ -38,7 +38,7 @@ export default function Contact() {
       } else {
         setStatus('error');
       }
-    } catch (err) {
+    } catch {
       setStatus('error');
     } finally {
       setLoading(false);
@@ -265,7 +265,7 @@ export default function Contact() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                 >
-                  🚀 Message sent successfully! I'll be in touch soon.
+                  🚀 Message sent successfully! I&apos;ll be in touch soon.
                 </motion.div>
               )}
               {status === 'error' && (

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Download, FileText, Award, Target } from 'lucide-react';
+import { Download, FileText, Award, Target, ArrowRight } from 'lucide-react';
 
 export default function Resume() {
   const resumeFeatures = [
