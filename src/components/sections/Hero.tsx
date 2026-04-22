@@ -24,7 +24,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 pb-20">
       {/* 3D Background Scene */}
       <HeroScene />
       
@@ -38,7 +38,7 @@ export default function Hero() {
           {/* Greeting */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl font-bold text-purple-600 dark:text-purple-400 mb-4 tracking-wider uppercase"
+            className="text-lg md:text-xl font-bold text-primary mb-4 tracking-wider uppercase"
           >
             Digital Architect & Storyteller
           </motion.p>
@@ -49,7 +49,7 @@ export default function Hero() {
             className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white leading-[0.9] mb-8"
           >
             I am <br />
-            <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 text-transparent bg-clip-text">
+            <span className="bg-gradient-to-r from-primary via-indigo-500 to-accent text-transparent bg-clip-text">
               Bibash Poudel
             </span>
           </motion.h1>
@@ -70,7 +70,7 @@ export default function Hero() {
             <Button
               asChild
               size="lg"
-              className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-8 py-7 text-lg font-bold shadow-xl shadow-purple-500/25 transition-all hover:scale-105 active:scale-95"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-7 text-lg font-bold shadow-xl shadow-primary/25 transition-all hover:scale-105 active:scale-95"
             >
               <Link href="/projects">
                 Explore My Work <FiFolder className="ml-3" />
@@ -92,7 +92,7 @@ export default function Hero() {
               href="/resume.pdf"
               target="_blank"
               whileHover={{ x: 5 }}
-              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 font-bold hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-2"
+              className="flex items-center gap-2 text-gray-600 dark:text-gray-400 font-bold hover:text-primary transition-colors ml-2"
             >
               <FiDownload /> Get Resume
             </motion.a>
@@ -106,7 +106,7 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <div className="w-1 h-12 rounded-full bg-gradient-to-b from-purple-500 to-transparent opacity-50" />
+        <div className="w-1 h-12 rounded-full bg-gradient-to-b from-primary to-transparent opacity-50" />
       </motion.div>
     </section>
   );

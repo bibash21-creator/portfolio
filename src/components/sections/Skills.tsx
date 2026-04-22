@@ -75,7 +75,7 @@ function SkillChip({ skill }: { skill: { name: string; detail: string } }) {
                    px-3 py-2 rounded-lg text-xs 
                    bg-white dark:bg-black/70 
                    text-gray-900 dark:text-gray-100 
-                   border border-purple-500/30 
+                   border border-primary/30 
                    shadow-lg backdrop-blur-md 
                    whitespace-nowrap pointer-events-none"
       >
@@ -105,7 +105,7 @@ export default function SkillsTimeline() {
         {/* Timeline line */}
         <div
           className="absolute left-1/2 top-0 h-full w-1 
-                        bg-gradient-to-b from-purple-500 to-pink-500 
+                        bg-gradient-to-b from-primary to-accent 
                         transform -translate-x-1/2"
         />
 
@@ -125,7 +125,7 @@ export default function SkillsTimeline() {
               {/* Marker */}
               <div
                 className="absolute left-1/2 w-6 h-6 rounded-full 
-                              bg-purple-500 border-4 border-pink-500 
+                              bg-primary border-4 border-accent 
                               transform -translate-x-1/2 shadow-lg"
               />
 
@@ -134,12 +134,12 @@ export default function SkillsTimeline() {
                 className="md:w-1/2 p-8 rounded-3xl 
                            bg-white/80 dark:bg-gray-900/40 
                            backdrop-blur-xl border border-white/20 dark:border-gray-800 
-                           shadow-2xl hover:shadow-purple-500/10 
-                           hover:border-purple-500/30
+                           shadow-2xl hover:shadow-primary/10 
+                           hover:border-primary/30
                            transition-all duration-500 group"
               >
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6 flex items-center gap-3">
-                  <span className="text-purple-600 dark:text-purple-400">{item.year}</span>
+                  <span className="text-primary">{item.year}</span>
                   <span className="w-1 h-1 rounded-full bg-gray-400" />
                   <span>{item.category}</span>
                 </h3>

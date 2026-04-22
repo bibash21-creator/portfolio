@@ -252,7 +252,7 @@ function ProjectCard({ p }: { p: Project }) {
           priority={false}
         />
         <div className="absolute top-3 left-3 flex gap-2">
-          <span className="px-3 py-1 text-xs rounded-full bg-purple-600/85 text-white">
+          <span className="px-3 py-1 text-xs rounded-full bg-primary/85 text-white">
             {p.status}
           </span>
           <DeploymentBadge live={p.live} />
@@ -280,7 +280,7 @@ function ProjectCard({ p }: { p: Project }) {
             <motion.li
               key={t}
               whileHover={{ scale: 1.05 }}
-              className="px-3 py-1 text-xs rounded-lg bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-200 border border-purple-300 dark:border-purple-700"
+              className="px-3 py-1 text-xs rounded-lg bg-secondary text-primary border border-primary/30"
               aria-label={t}
             >
               {t}
@@ -294,7 +294,7 @@ function ProjectCard({ p }: { p: Project }) {
             <Button
               asChild
               size="sm"
-              className="bg-purple-600 hover:bg-purple-700 text-white focus:ring-2 focus:ring-purple-400"
+              className="bg-primary hover:bg-primary/90 text-white focus:ring-2 focus:ring-primary/40"
             >
               <a href={p.live} target="_blank" rel="noopener noreferrer">
                 <ExternalLink className="w-4 h-4 mr-1" /> Live
@@ -306,7 +306,7 @@ function ProjectCard({ p }: { p: Project }) {
               asChild
               variant="outline"
               size="sm"
-              className="hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-200 focus:ring-2 focus:ring-purple-400"
+              className="hover:border-primary hover:text-primary focus:ring-2 focus:ring-primary/40"
             >
               <a href={p.github} target="_blank" rel="noopener noreferrer">
                 <Github className="w-4 h-4 mr-1" /> Code
@@ -414,8 +414,8 @@ export default function ProjectPage() {
             transition-all
             ${
               active
-                ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md'
-                : 'bg-white/70 dark:bg-gray-900/40 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
+                ? 'bg-gradient-to-r from-primary to-accent text-white shadow-md'
+                : 'bg-white/70 dark:bg-gray-900/40 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent'
             }
           `}
               >
@@ -439,8 +439,8 @@ export default function ProjectPage() {
               className={`px-4 py-2 text-sm font-medium rounded-full transition-colors
                             ${
                               active
-                                ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md'
-                                : 'text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300'
+                                ? 'bg-gradient-to-r from-primary to-accent text-white shadow-md'
+                                : 'text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-accent'
                             }`}
             >
               {v === 'grid' ? 'Grid' : 'Carousel'}
@@ -508,7 +508,7 @@ export default function ProjectPage() {
         <Button
           asChild
           size="lg"
-          className="bg-purple-600 hover:bg-purple-700 text-white focus:ring-2 focus:ring-purple-400"
+          className="bg-primary hover:bg-primary/90 text-white focus:ring-2 focus:ring-primary/40"
         >
           <Link href="/projects">
             View All Projects <ArrowRight className="ml-2" />
